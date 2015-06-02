@@ -10,4 +10,7 @@
 
 @interface LocationReviewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *reviewTextLabel;
+@property (weak, nonatomic) IBOutlet UILabel *reviewUsernameDateLabel;
+
 @end

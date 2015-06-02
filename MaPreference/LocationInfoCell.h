@@ -10,4 +10,10 @@
 
 @interface LocationInfoCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *locationNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationAddressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationPhoneLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbsUpImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbsDownImageView;
+
 @end

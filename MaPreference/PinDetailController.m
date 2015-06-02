@@ -7,12 +7,16 @@
 //
 
 #import "PinDetailController.h"
+#import "LocationInfoCell.h"
+#import "LocationReviewCell.h"
 
-@interface PinDetailController ()
+@interface PinDetailController ()<UITableViewDelegate>
 
 @end
 
 @implementation PinDetailController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,6 +26,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,15 +48,28 @@
     return 0;
 }
 
-/*
+
+//-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    LocationReviewCell *locationCell = [tableView dequeueReusableCellWithIdentifier:@"locationReviewCell" forIndexPath:indexPath];
+    LocationInfoCell *reviewCell = [tableView dequeueReusableCellWithIdentifier:@"locationInfoCell" forIndexPath:indexPath];
     
+//    if (indexPath.row == 0) {
+//        return tableView.rowHeight = 200;
+//    }
+//    else {
+//        tableView.estimatedRowHeight = 100.0;
+//        return tableView.rowHeight = UITableViewAutomaticDimension;
+//    }
+//    
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

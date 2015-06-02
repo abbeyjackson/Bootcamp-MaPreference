@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationInfoCell" rowHeight="207" id="6Xm-kR-Omi" customClass="LocationInfoCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationInfoCell" rowHeight="200" id="6Xm-kR-Omi" customClass="LocationInfoCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Xm-kR-Omi" id="DDf-w6-V1p">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -44,12 +44,37 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="locationAddressLabel" destination="Aqu-D8-Uhn" id="sTg-Cj-8FF"/>
+                                    <outlet property="locationNameLabel" destination="jtp-1T-aJL" id="UOa-SL-eLo"/>
+                                    <outlet property="locationPhoneLabel" destination="uX1-u5-hi1" id="g8Z-ts-LDI"/>
+                                    <outlet property="thumbsDownImageView" destination="H44-Dp-pq0" id="o5j-vL-Wmm"/>
+                                    <outlet property="thumbsUpImageView" destination="kB7-bW-yY3" id="tnO-sJ-PFs"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationReviewCell" rowHeight="255" id="2mE-Zd-9DL" customClass="LocationReviewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2mE-Zd-9DL" id="Uhi-fl-0b1">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Review" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SV-7l-PMa">
+                                            <rect key="frame" x="31" y="32" width="56" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username and Date of review" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGD-Sl-LSR">
+                                            <rect key="frame" x="31" y="78" width="227" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="reviewTextLabel" destination="6SV-7l-PMa" id="2so-Py-t2d"/>
+                                    <outlet property="reviewUsernameDateLabel" destination="pGD-Sl-LSR" id="pXQ-eI-F1N"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
