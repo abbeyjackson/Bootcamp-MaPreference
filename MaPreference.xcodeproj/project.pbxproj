@@ -10,11 +10,13 @@
 		F66EF5531B1E2B3E005C972A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5521B1E2B3E005C972A /* main.m */; };
 		F66EF5561B1E2B3E005C972A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5551B1E2B3E005C972A /* AppDelegate.m */; };
 		F66EF5591B1E2B3E005C972A /* MaPreference.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5571B1E2B3E005C972A /* MaPreference.xcdatamodeld */; };
-		F66EF55C1B1E2B3E005C972A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF55B1B1E2B3E005C972A /* ViewController.m */; };
 		F66EF55F1B1E2B3E005C972A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F66EF55D1B1E2B3E005C972A /* Main.storyboard */; };
 		F66EF5611B1E2B3E005C972A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F66EF5601B1E2B3E005C972A /* Images.xcassets */; };
 		F66EF5641B1E2B3E005C972A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66EF5621B1E2B3E005C972A /* LaunchScreen.xib */; };
 		F66EF5701B1E2B3E005C972A /* MaPreferenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF56F1B1E2B3E005C972A /* MaPreferenceTests.m */; };
+		F66EF5841B1E30F9005C972A /* LocationReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5831B1E30F9005C972A /* LocationReviewCell.m */; };
+		F66EF5871B1E3118005C972A /* LocationInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5861B1E3118005C972A /* LocationInfoCell.m */; };
+		F66EF58A1B1E3136005C972A /* PinDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5891B1E3136005C972A /* PinDetailController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,14 +36,18 @@
 		F66EF5541B1E2B3E005C972A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F66EF5551B1E2B3E005C972A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F66EF5581B1E2B3E005C972A /* MaPreference.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MaPreference.xcdatamodel; sourceTree = "<group>"; };
-		F66EF55A1B1E2B3E005C972A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F66EF55B1B1E2B3E005C972A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F66EF55E1B1E2B3E005C972A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F66EF5601B1E2B3E005C972A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F66EF5631B1E2B3E005C972A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F66EF5691B1E2B3E005C972A /* MaPreferenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MaPreferenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66EF56E1B1E2B3E005C972A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F66EF56F1B1E2B3E005C972A /* MaPreferenceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MaPreferenceTests.m; sourceTree = "<group>"; };
+		F66EF5821B1E30F9005C972A /* LocationReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationReviewCell.h; sourceTree = "<group>"; };
+		F66EF5831B1E30F9005C972A /* LocationReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationReviewCell.m; sourceTree = "<group>"; };
+		F66EF5851B1E3118005C972A /* LocationInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationInfoCell.h; sourceTree = "<group>"; };
+		F66EF5861B1E3118005C972A /* LocationInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationInfoCell.m; sourceTree = "<group>"; };
+		F66EF5881B1E3136005C972A /* PinDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinDetailController.h; sourceTree = "<group>"; };
+		F66EF5891B1E3136005C972A /* PinDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinDetailController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,14 +89,12 @@
 		F66EF54F1B1E2B3E005C972A /* MaPreference */ = {
 			isa = PBXGroup;
 			children = (
+				F66EF58B1B1E313F005C972A /* Cells */,
+				F66EF58C1B1E3158005C972A /* ViewControllers */,
 				F66EF5541B1E2B3E005C972A /* AppDelegate.h */,
 				F66EF5551B1E2B3E005C972A /* AppDelegate.m */,
-				F66EF55A1B1E2B3E005C972A /* ViewController.h */,
-				F66EF55B1B1E2B3E005C972A /* ViewController.m */,
 				F66EF55D1B1E2B3E005C972A /* Main.storyboard */,
 				F66EF5601B1E2B3E005C972A /* Images.xcassets */,
-				F66EF5621B1E2B3E005C972A /* LaunchScreen.xib */,
-				F66EF5571B1E2B3E005C972A /* MaPreference.xcdatamodeld */,
 				F66EF5501B1E2B3E005C972A /* Supporting Files */,
 			);
 			path = MaPreference;
@@ -99,6 +103,8 @@
 		F66EF5501B1E2B3E005C972A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F66EF5621B1E2B3E005C972A /* LaunchScreen.xib */,
+				F66EF5571B1E2B3E005C972A /* MaPreference.xcdatamodeld */,
 				F66EF5511B1E2B3E005C972A /* Info.plist */,
 				F66EF5521B1E2B3E005C972A /* main.m */,
 			);
@@ -120,6 +126,26 @@
 				F66EF56E1B1E2B3E005C972A /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F66EF58B1B1E313F005C972A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F66EF5821B1E30F9005C972A /* LocationReviewCell.h */,
+				F66EF5831B1E30F9005C972A /* LocationReviewCell.m */,
+				F66EF5851B1E3118005C972A /* LocationInfoCell.h */,
+				F66EF5861B1E3118005C972A /* LocationInfoCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		F66EF58C1B1E3158005C972A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F66EF5881B1E3136005C972A /* PinDetailController.h */,
+				F66EF5891B1E3136005C972A /* PinDetailController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,9 +248,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F66EF5841B1E30F9005C972A /* LocationReviewCell.m in Sources */,
 				F66EF5591B1E2B3E005C972A /* MaPreference.xcdatamodeld in Sources */,
+				F66EF58A1B1E3136005C972A /* PinDetailController.m in Sources */,
 				F66EF5561B1E2B3E005C972A /* AppDelegate.m in Sources */,
-				F66EF55C1B1E2B3E005C972A /* ViewController.m in Sources */,
+				F66EF5871B1E3118005C972A /* LocationInfoCell.m in Sources */,
 				F66EF5531B1E2B3E005C972A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +448,7 @@
 				F66EF5751B1E2B3E005C972A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F66EF5761B1E2B3E005C972A /* Build configuration list for PBXNativeTarget "MaPreferenceTests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +457,7 @@
 				F66EF5781B1E2B3E005C972A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
