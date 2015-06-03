@@ -54,21 +54,21 @@
 //}
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    LocationReviewCell *locationCell = [tableView dequeueReusableCellWithIdentifier:@"locationReviewCell" forIndexPath:indexPath];
-    LocationInfoCell *reviewCell = [tableView dequeueReusableCellWithIdentifier:@"locationInfoCell" forIndexPath:indexPath];
-    
-//    if (indexPath.row == 0) {
-//        return tableView.rowHeight = 200;
-//    }
-//    else {
-//        tableView.estimatedRowHeight = 100.0;
-//        return tableView.rowHeight = UITableViewAutomaticDimension;
-//    }
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 //    
-    return cell;
-}
+//    LocationReviewCell *locationCell = [tableView dequeueReusableCellWithIdentifier:@"locationReviewCell" forIndexPath:indexPath];
+//    LocationInfoCell *reviewCell = [tableView dequeueReusableCellWithIdentifier:@"locationInfoCell" forIndexPath:indexPath];
+//    
+////    if (indexPath.row == 0) {
+////        return tableView.rowHeight = 200;
+////    }
+////    else {
+////        tableView.estimatedRowHeight = 100.0;
+////        return tableView.rowHeight = UITableViewAutomaticDimension;
+////    }
+////    
+//    return cell;
+//}
 
 
 /*
