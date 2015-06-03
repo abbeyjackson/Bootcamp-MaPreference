@@ -32,6 +32,9 @@
                                 <state key="normal" title="Sign Up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="signup:" destination="HIe-NS-ZzT" eventType="touchUpInside" id="cre-F7-73h"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Confirm Password" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b1a-EF-kWi">
                                 <rect key="frame" x="16" y="104" width="568" height="30"/>
@@ -41,6 +44,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="b1a-EF-kWi" id="p9W-N2-V93"/>
+                        <outlet property="passwordField" destination="RuQ-w5-Ai9" id="GRF-4R-Dt3"/>
+                        <outlet property="usernameField" destination="vLt-QC-F2s" id="9hD-Dt-Wkj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAu-LG-VZh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -189,11 +197,16 @@
                                 <state key="normal" title="Log On">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="login:" destination="gGZ-YY-Uu0" eventType="touchUpInside" id="bN2-3J-QlJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="passwordField" destination="vxe-8l-Sba" id="Jn1-4J-Joy"/>
+                        <outlet property="usernameField" destination="PiZ-8T-j0o" id="lU7-AA-3f6"/>
                         <segue destination="HIe-NS-ZzT" kind="presentation" identifier="showSignup" id="nRa-ux-URh"/>
                         <segue destination="T0K-pn-jXA" kind="show" identifier="showMap" id="QaO-sM-NVx"/>
                     </connections>
