@@ -8,7 +8,7 @@
         <!--Signup ViewController-->
         <scene sceneID="KRs-sZ-0hD">
             <objects>
-                <viewController title="Signup ViewController" id="HIe-NS-ZzT" sceneMemberID="viewController">
+                <viewController title="Signup ViewController" id="HIe-NS-ZzT" customClass="SignupViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="645-E5-v3Z"/>
                         <viewControllerLayoutGuide type="bottom" id="agK-tt-R5B"/>
@@ -18,23 +18,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vLt-QC-F2s">
-                                <rect key="frame" x="252" y="28" width="97" height="30"/>
+                                <rect key="frame" x="16" y="28" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RuQ-w5-Ai9">
-                                <rect key="frame" x="252" y="66" width="97" height="30"/>
+                                <rect key="frame" x="16" y="66" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kEO-89-QYh">
-                                <rect key="frame" x="277" y="142" width="55" height="30"/>
+                                <rect key="frame" x="16" y="142" width="568" height="30"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Confirm Password" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b1a-EF-kWi">
-                                <rect key="frame" x="252" y="104" width="97" height="30"/>
+                                <rect key="frame" x="16" y="104" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -152,7 +152,7 @@
         <!--Login View Controller-->
         <scene sceneID="ItJ-u0-m7M">
             <objects>
-                <viewController title="Login View Controller" id="gGZ-YY-Uu0" sceneMemberID="viewController">
+                <viewController title="Login View Controller" id="gGZ-YY-Uu0" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VCD-jF-QmR"/>
                         <viewControllerLayoutGuide type="bottom" id="wCR-Gf-CIF"/>
@@ -185,7 +185,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sp9-ub-NiH">
-                                <rect key="frame" x="275" y="136" width="51" height="30"/>
+                                <rect key="frame" x="16" y="136" width="568" height="30"/>
                                 <state key="normal" title="Log On">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
