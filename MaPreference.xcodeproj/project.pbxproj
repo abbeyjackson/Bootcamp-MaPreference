@@ -17,6 +17,10 @@
 		F66EF5841B1E30F9005C972A /* LocationReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5831B1E30F9005C972A /* LocationReviewCell.m */; };
 		F66EF5871B1E3118005C972A /* LocationInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5861B1E3118005C972A /* LocationInfoCell.m */; };
 		F66EF58A1B1E3136005C972A /* PinDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5891B1E3136005C972A /* PinDetailController.m */; };
+		F66EF58F1B1EAF3B005C972A /* AddReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF58E1B1EAF3B005C972A /* AddReviewController.m */; };
+		F66EF5921B1EB9F4005C972A /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5911B1EB9F4005C972A /* DataViewController.m */; };
+		F66EF5951B1EBA2A005C972A /* ListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5941B1EBA2A005C972A /* ListViewCell.m */; };
+		F66EF5981B1EBAB4005C972A /* AddLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5971B1EBAB4005C972A /* AddLocationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,14 @@
 		F66EF5861B1E3118005C972A /* LocationInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationInfoCell.m; sourceTree = "<group>"; };
 		F66EF5881B1E3136005C972A /* PinDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinDetailController.h; sourceTree = "<group>"; };
 		F66EF5891B1E3136005C972A /* PinDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinDetailController.m; sourceTree = "<group>"; };
+		F66EF58D1B1EAF3B005C972A /* AddReviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddReviewController.h; sourceTree = "<group>"; };
+		F66EF58E1B1EAF3B005C972A /* AddReviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddReviewController.m; sourceTree = "<group>"; };
+		F66EF5901B1EB9F4005C972A /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
+		F66EF5911B1EB9F4005C972A /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
+		F66EF5931B1EBA2A005C972A /* ListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewCell.h; sourceTree = "<group>"; };
+		F66EF5941B1EBA2A005C972A /* ListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewCell.m; sourceTree = "<group>"; };
+		F66EF5961B1EBAB4005C972A /* AddLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLocationController.h; sourceTree = "<group>"; };
+		F66EF5971B1EBAB4005C972A /* AddLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLocationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +147,8 @@
 				F66EF5831B1E30F9005C972A /* LocationReviewCell.m */,
 				F66EF5851B1E3118005C972A /* LocationInfoCell.h */,
 				F66EF5861B1E3118005C972A /* LocationInfoCell.m */,
+				F66EF5931B1EBA2A005C972A /* ListViewCell.h */,
+				F66EF5941B1EBA2A005C972A /* ListViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -144,6 +158,12 @@
 			children = (
 				F66EF5881B1E3136005C972A /* PinDetailController.h */,
 				F66EF5891B1E3136005C972A /* PinDetailController.m */,
+				F66EF58D1B1EAF3B005C972A /* AddReviewController.h */,
+				F66EF58E1B1EAF3B005C972A /* AddReviewController.m */,
+				F66EF5901B1EB9F4005C972A /* DataViewController.h */,
+				F66EF5911B1EB9F4005C972A /* DataViewController.m */,
+				F66EF5961B1EBAB4005C972A /* AddLocationController.h */,
+				F66EF5971B1EBAB4005C972A /* AddLocationController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -248,12 +268,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F66EF5981B1EBAB4005C972A /* AddLocationController.m in Sources */,
+				F66EF5921B1EB9F4005C972A /* DataViewController.m in Sources */,
 				F66EF5841B1E30F9005C972A /* LocationReviewCell.m in Sources */,
 				F66EF5591B1E2B3E005C972A /* MaPreference.xcdatamodeld in Sources */,
 				F66EF58A1B1E3136005C972A /* PinDetailController.m in Sources */,
+				F66EF5951B1EBA2A005C972A /* ListViewCell.m in Sources */,
 				F66EF5561B1E2B3E005C972A /* AppDelegate.m in Sources */,
 				F66EF5871B1E3118005C972A /* LocationInfoCell.m in Sources */,
 				F66EF5531B1E2B3E005C972A /* main.m in Sources */,
+				F66EF58F1B1EAF3B005C972A /* AddReviewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
