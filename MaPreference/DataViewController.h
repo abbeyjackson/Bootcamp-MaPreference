@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface DataViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *dataMapListToggleButton;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UITableView *locationListTableView;
 
 
 @end

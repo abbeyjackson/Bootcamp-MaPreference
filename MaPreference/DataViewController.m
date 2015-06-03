@@ -8,16 +8,76 @@
 
 #import "DataViewController.h"
 
-@interface DataViewController ()
+@interface DataViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>{
+    CLLocationManager *_locationManager;
+    bool initialLocationSet;
+}
 
 @end
 
 @implementation DataViewController
 
+NSString *locationButtonText = @"List Locations";
+NSString *mapButtonText = @"Show Map";
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setInitialCondition];
 }
+
+-(void)setInitialCondition{
+    
+    [self myLocation];
+    
+    self.mapView.showsUserLocation = true;
+    self.mapView.delegate = self;
+    self.mapView.hidden = NO;
+    self.locationListTableView.hidden = YES;
+}
+
+-(IBAction)mapListViewSwitchButton:(id)sender{
+    if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:locationButtonText]) {
+        self.locationListTableView.hidden = NO;
+        self.mapView.hidden = YES;
+        self.dataMapListToggleButton.titleLabel.text = mapButtonText;
+    }
+    else if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:mapButtonText]) {
+        self.locationListTableView.hidden = YES;
+        self.mapView.hidden = NO;
+        self.dataMapListToggleButton.titleLabel.text = locationButtonText;
+    }
+    
+}
+
+-(void)myLocation{
+    initialLocationSet = NO;
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [_locationManager requestWhenInUseAuthorization];
+    [_locationManager startUpdatingLocation];
+    _locationManager.delegate = self;
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    CLLocation *location = [locations firstObject];
+    
+    if (!initialLocationSet){
+        
+        MKCoordinateRegion startingRegion;
+        CLLocationCoordinate2D loc = location.coordinate;
+        startingRegion.center = loc;
+        startingRegion.span.latitudeDelta = 0.02;
+        startingRegion.span.longitudeDelta = 0.02;
+        [self.mapView setRegion:startingRegion];
+        
+        initialLocationSet = YES;
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
