@@ -24,6 +24,10 @@
 		F66EF5921B1EB9F4005C972A /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5911B1EB9F4005C972A /* DataViewController.m */; };
 		F66EF5951B1EBA2A005C972A /* ListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5941B1EBA2A005C972A /* ListViewCell.m */; };
 		F66EF5981B1EBAB4005C972A /* AddLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5971B1EBAB4005C972A /* AddLocationController.m */; };
+		F66EF5A21B200561005C972A /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66EF5A11B200561005C972A /* AddressBookUI.framework */; };
+		F66EF5A41B200566005C972A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66EF5A31B200566005C972A /* AddressBook.framework */; };
+		F66EF5A61B20056C005C972A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66EF5A51B20056C005C972A /* MapKit.framework */; };
+		F66EF5A81B200574005C972A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66EF5A71B200574005C972A /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +74,10 @@
 		F66EF5941B1EBA2A005C972A /* ListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewCell.m; sourceTree = "<group>"; };
 		F66EF5961B1EBAB4005C972A /* AddLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLocationController.h; sourceTree = "<group>"; };
 		F66EF5971B1EBAB4005C972A /* AddLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLocationController.m; sourceTree = "<group>"; };
+		F66EF5A11B200561005C972A /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		F66EF5A31B200566005C972A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		F66EF5A51B20056C005C972A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F66EF5A71B200574005C972A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +85,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F66EF5A81B200574005C972A /* CoreLocation.framework in Frameworks */,
+				F66EF5A61B20056C005C972A /* MapKit.framework in Frameworks */,
+				F66EF5A41B200566005C972A /* AddressBook.framework in Frameworks */,
+				F66EF5A21B200561005C972A /* AddressBookUI.framework in Frameworks */,
 				290849D3C580106F4AE03B85 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,6 +115,10 @@
 		CBF2FBCD752BE0C6FDFBE426 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F66EF5A71B200574005C972A /* CoreLocation.framework */,
+				F66EF5A51B20056C005C972A /* MapKit.framework */,
+				F66EF5A31B200566005C972A /* AddressBook.framework */,
+				F66EF5A11B200561005C972A /* AddressBookUI.framework */,
 				F0513993EE333F1EB827D4A1 /* libPods.a */,
 			);
 			name = Frameworks;
