@@ -48,6 +48,11 @@
     return 0;
 }
 
+- (IBAction)unwindToPinDetail:(UIStoryboardSegue*)sender{
+    
+    // Pull any data from the view controller which initiated the unwind segue.
+}
+
 
 //-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
 //    

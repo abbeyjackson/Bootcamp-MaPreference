@@ -7,6 +7,8 @@
 //
 
 #import "DataViewController.h"
+#import <Parse/Parse.h>
+
 
 @interface DataViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>{
     CLLocationManager *_locationManager;
@@ -25,6 +27,13 @@ NSString *mapButtonText = @"Show Map";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+//    PFUser *currentUser = [PFUser currentUser];
+//    if (currentUser) {
+//        NSLog(@"Current User: %@", currentUser.username);
+//    }
+//    else {
+//        [self performSegueWithIdentifier:@"showLogin" sender:self];
+//    }
     [self setInitialCondition];
 }
 

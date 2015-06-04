@@ -10,4 +10,7 @@
 
 @interface PinDetailController : UITableViewController
 
+
+- (IBAction)unwindToPinDetail:(UIStoryboardSegue*)sender;
+
 @end

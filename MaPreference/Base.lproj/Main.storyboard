@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gGZ-YY-Uu0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="T0K-pn-jXA">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -274,8 +274,6 @@
                     <connections>
                         <outlet property="passwordField" destination="vxe-8l-Sba" id="Jn1-4J-Joy"/>
                         <outlet property="usernameField" destination="PiZ-8T-j0o" id="lU7-AA-3f6"/>
-                        <segue destination="HIe-NS-ZzT" kind="presentation" identifier="showSignup" id="nRa-ux-URh"/>
-                        <segue destination="T0K-pn-jXA" kind="show" identifier="showMap" id="QaO-sM-NVx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jsC-Dl-eut" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -452,6 +450,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Pnq-ne-ZqX" kind="unwind" unwindAction="unwindToPinDetail:" id="FRS-eD-zxY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIV-9z-hoV">
                                 <rect key="frame" x="537" y="30" width="37" height="30"/>
@@ -495,6 +496,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d0g-Jw-Zmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Pnq-ne-ZqX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2307" y="211"/>
         </scene>
@@ -565,6 +567,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="p6h-OV-UZF" kind="unwind" unwindAction="unwindToPinDetail:" id="6c7-Ev-djh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCu-0d-H1P">
                                 <rect key="frame" x="537" y="30" width="37" height="30"/>
@@ -619,6 +624,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsQ-sD-gsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="p6h-OV-UZF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1463" y="1038"/>
         </scene>
@@ -634,6 +640,7 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="uuX-OD-ipi" kind="relationship" relationship="rootViewController" id="Stv-40-Oco"/>
+                        <segue destination="gGZ-YY-Uu0" kind="show" identifier="showLogin" id="NAl-4i-V6K"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8u-w2-miY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -641,7 +648,4 @@
             <point key="canvasLocation" x="-326" y="211"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="nRa-ux-URh"/>
-    </inferredMetricsTieBreakers>
 </document>
