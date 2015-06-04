@@ -169,6 +169,11 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="xxh-K8-coF">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="WYY-do-s2l">
+                            <connections>
+                                <action selector="logoutUser:" destination="uuX-OD-ipi" id="OeN-mW-bF7"/>
+                            </connections>
+                        </barButtonItem>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pxp-8e-PGH">
                             <rect key="frame" x="180" y="7" width="240" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

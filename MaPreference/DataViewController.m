@@ -27,13 +27,17 @@ NSString *mapButtonText = @"Show Map";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    PFUser *currentUser = [PFUser currentUser];
-//    if (currentUser) {
-//        NSLog(@"Current User: %@", currentUser.username);
-//    }
-//    else {
-//        [self performSegueWithIdentifier:@"showLogin" sender:self];
-//    }
+    [self loadRootView];
+}
+
+-(void)loadRootView{
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        NSLog(@"Current User: %@", currentUser.username);
+    }
+    else {
+        [self performSegueWithIdentifier:@"showLogin" sender:self];
+    }
     [self setInitialCondition];
 }
 
@@ -87,6 +91,10 @@ NSString *mapButtonText = @"Show Map";
     }
 }
 
+- (IBAction)logoutUser:(id)sender {
+    [PFUser logOut];
+    [self loadRootView];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
