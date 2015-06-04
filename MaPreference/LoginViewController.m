@@ -19,7 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.hidesBackButton = YES;
+    [self.navigationItem setHidesBackButton:YES];
+    
 }
 
 - (IBAction)login:(UIButton*)sender {
