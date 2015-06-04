@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+#import "SignUpViewController.h"
 
 @interface LoginViewController ()
 
@@ -21,7 +22,7 @@
     self.navigationItem.hidesBackButton = YES;
 }
 
-- (IBAction)login:(id)sender {
+- (IBAction)login:(UIButton*)sender {
     NSString *username = [self.usernameField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString *password = [self.passwordField.text stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
@@ -44,4 +45,12 @@
     }
     
 }
+
+
+- (IBAction)unwindToLogin:(UIStoryboardSegue*)sender{
+    
+    // Pull any data from the view controller which initiated the unwind segue.
+}
+
+
 @end

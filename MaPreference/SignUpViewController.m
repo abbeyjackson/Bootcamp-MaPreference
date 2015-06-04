@@ -8,6 +8,7 @@
 
 #import "SignupViewController.h"
 #import <Parse/Parse.h>
+#import "LoginViewController.h"
 
 @interface SignupViewController ()
 
@@ -53,4 +54,5 @@
     }
     
 }
+
 @end
