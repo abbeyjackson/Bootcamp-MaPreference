@@ -28,6 +28,7 @@
 		F66EF5A41B200566005C972A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66EF5A31B200566005C972A /* AddressBook.framework */; };
 		F66EF5A61B20056C005C972A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66EF5A51B20056C005C972A /* MapKit.framework */; };
 		F66EF5A81B200574005C972A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66EF5A71B200574005C972A /* CoreLocation.framework */; };
+		F6E917891B20F711001CC404 /* PinLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F6E917881B20F711001CC404 /* PinLocation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		F66EF5A31B200566005C972A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		F66EF5A51B20056C005C972A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F66EF5A71B200574005C972A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F6E917871B20F711001CC404 /* PinLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinLocation.h; sourceTree = "<group>"; };
+		F6E917881B20F711001CC404 /* PinLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinLocation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +150,7 @@
 		F66EF54F1B1E2B3E005C972A /* MaPreference */ = {
 			isa = PBXGroup;
 			children = (
+				F6E917831B20DEA9001CC404 /* Model */,
 				F66EF58B1B1E313F005C972A /* Cells */,
 				F66EF58C1B1E3158005C972A /* ViewControllers */,
 				F66EF5541B1E2B3E005C972A /* AppDelegate.h */,
@@ -216,6 +220,15 @@
 				A7A59D721B1F7BAC00887065 /* SignUpViewController.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F6E917831B20DEA9001CC404 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F6E917871B20F711001CC404 /* PinLocation.h */,
+				F6E917881B20F711001CC404 /* PinLocation.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,6 +377,7 @@
 				F66EF5871B1E3118005C972A /* LocationInfoCell.m in Sources */,
 				F66EF5531B1E2B3E005C972A /* main.m in Sources */,
 				A7A59D701B1F7BA000887065 /* LoginViewController.m in Sources */,
+				F6E917891B20F711001CC404 /* PinLocation.m in Sources */,
 				F66EF58F1B1EAF3B005C972A /* AddReviewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,9 +8,10 @@
 
 #import "DataViewController.h"
 #import <Parse/Parse.h>
+#import "AddLocationController.h"
 
 
-@interface DataViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>{
+@interface DataViewController ()<MKMapViewDelegate, CLLocationManagerDelegate, AddLocationControllerDataSource>{
     CLLocationManager *_locationManager;
     bool initialLocationSet;
 }
@@ -95,6 +96,18 @@ NSString *mapButtonText = @"Show Map";
     [PFUser logOut];
     [self loadRootView];
 }
+
+
+- (void)showAddLocationController{
+    AddLocationController *addLocationController = [[AddLocationController alloc]init];
+    addLocationController.dataSource = self;
+    [self.navigationController presentViewController:addLocationController animated:YES completion:nil];
+}
+
+- (CLLocation *)currentLocationForAddLocationController:(AddLocationController *)controller {
+    return self.currentLocation;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
