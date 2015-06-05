@@ -55,12 +55,12 @@ NSString *mapButtonText = @"Show Map";
     if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:locationButtonText]) {
         self.locationListTableView.hidden = NO;
         self.mapView.hidden = YES;
-        self.dataMapListToggleButton.titleLabel.text = mapButtonText;
+        [self.dataMapListToggleButton setTitle:mapButtonText forState:UIControlStateNormal];
     }
     else if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:mapButtonText]) {
         self.locationListTableView.hidden = YES;
         self.mapView.hidden = NO;
-        self.dataMapListToggleButton.titleLabel.text = locationButtonText;
+        [self.dataMapListToggleButton setTitle:locationButtonText forState:UIControlStateNormal];
     }
     
 }
