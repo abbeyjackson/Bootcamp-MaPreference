@@ -81,6 +81,7 @@
 		F66EF5A71B200574005C972A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F6E917871B20F711001CC404 /* PinLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinLocation.h; sourceTree = "<group>"; };
 		F6E917881B20F711001CC404 /* PinLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinLocation.m; sourceTree = "<group>"; };
+		F6E917911B21399D001CC404 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +226,7 @@
 		F6E917831B20DEA9001CC404 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F6E917911B21399D001CC404 /* Constants.h */,
 				F6E917871B20F711001CC404 /* PinLocation.h */,
 				F6E917881B20F711001CC404 /* PinLocation.m */,
 			);

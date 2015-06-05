@@ -9,5 +9,13 @@
 #ifndef MaPreference_Constants_h
 #define MaPreference_Constants_h
 
+// Parse keys
+const NSString *addLocationClassName = @"pins";
+const NSString *addLocationCreatedNotification = @"AddLocationCreatedNotification";
+
+// Notification Centre
+const NSString *currentLocationDidChangeNotification = @"CurrentLocationDidChangeNotification";
+const NSString *FilterDistanceKey = @"filterDistance";
+const NSString *LocationKey = @"location";
 
 #endif

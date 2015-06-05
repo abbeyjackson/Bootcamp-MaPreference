@@ -9,6 +9,7 @@
 #import "AddLocationController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "PinLocation.h"
+#import "Constants.h"
 
 
 @interface AddLocationController ()
@@ -16,10 +17,6 @@
 @end
 
 @implementation AddLocationController
-
-
-const NSString * addLocationClassName = @"pins";
-const NSString * addLocationCreatedNotification = @"AddLocationCreatedNotification";
 
 
 - (void)viewDidLoad {
