@@ -17,6 +17,11 @@
 
 @implementation AddLocationController
 
+
+const NSString * addLocationClassName = @"pins";
+const NSString * addLocationCreatedNotification = @"AddLocationCreatedNotification";
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -44,21 +49,43 @@
     PFGeoPoint *currentPoint = [PFGeoPoint geoPointWithLatitude:currentCoordinate.latitude
                                                       longitude:currentCoordinate.longitude];
     
-    PinLocation *pinObject = [PinLocation objectWithClassName:AddLocationClassName];
-    pinObject.ad
-    
-    // Create a PFObject using the Post class and set the values we extracted above
-    PFObject *postObject = [PFObject objectWithClassName:PAWParsePostsClassName];
-    postObject[PAWParsePostTextKey] = self.textView.text;
-    postObject[PAWParsePostUserKey] = user;
-    postObject[PAWParsePostLocationKey] = currentPoint;
+    PinLocation *pinObject = [PinLocation objectWithClassName:addLocationClassName];
+    pinObject.addLocationNameKey = self.addLocationNameLabel.text;
+    pinObject.addLocationAddressKey = self.addLocationAddressLabel.text;
+    pinObject.addLocationReviewKey = self.addLocationReviewField.text;
+    pinObject.addLocationUserKey = user;
+    pinObject.addLocationPinLocationKey = currentPoint;
     
     // Use PFACL to restrict future modifications to this object.
     PFACL *readOnlyACL = [PFACL ACL];
     [readOnlyACL setPublicReadAccess:YES];
     [readOnlyACL setPublicWriteAccess:NO];
-    postObject.ACL = readOnlyACL;
-    ...
+    pinObject.ACL = readOnlyACL;
+
+    
+    [pinObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error) {  // Failed to save, show an alert view with the error message
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[error userInfo][@"error"]
+                                                                message:nil
+                                                               delegate:self
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"Ok", nil];
+            [alertView show];
+            return;
+        }
+        if (succeeded) {  // Successfully saved, post a notification to tell other view controllers
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:addLocationCreatedNotification
+                 object:nil];
+            });
+        } else {
+            NSLog(@"Failed to save.");
+        }
+    }];
+    
+    // Dismiss this view controller and return to the main view
+    [self dismissViewControllerAnimated:YES completion:nil];
     
     
 }

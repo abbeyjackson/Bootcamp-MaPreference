@@ -10,11 +10,10 @@
 
 @interface PinLocation : PFObject <PFSubclassing>
 
-@property (nonatomic, strong) NSString * addLocationClassName;
 @property (nonatomic, strong) NSString * addLocationUserKey;
-@property (nonatomic, strong) NSString * addLocationUsernameKey;
-@property (nonatomic, strong) NSString * addLocationTextKey;
-@property (nonatomic, strong) NSString * addLocationLocationKey;
+@property (nonatomic, strong) NSString * addLocationPinLocationKey;
+@property (nonatomic, strong) NSString * addLocationReviewKey;
+@property (nonatomic, strong) NSString * addLocationAddressKey;
 @property (nonatomic, strong) NSString * addLocationNameKey;
 
 + (NSString *)parseClassName;

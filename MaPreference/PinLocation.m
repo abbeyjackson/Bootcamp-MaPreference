@@ -12,11 +12,10 @@
 @implementation PinLocation 
 
 
-@dynamic addLocationClassName;
 @dynamic addLocationUserKey;
-@dynamic addLocationUsernameKey;
-@dynamic addLocationTextKey;
-@dynamic addLocationLocationKey;
+@dynamic addLocationPinLocationKey;
+@dynamic addLocationReviewKey;
+@dynamic addLocationAddressKey;
 @dynamic addLocationNameKey;
 
 
@@ -29,11 +28,10 @@
 }
 
 -(void)setup{
-    self.addLocationClassName = @"pins";
     self.addLocationUserKey = @"user";
-    self.addLocationUsernameKey = @"username";
-    self.addLocationTextKey = @"text";
-    self.addLocationLocationKey = @"location";
+    self.addLocationPinLocationKey = @"geoPoint";
+    self.addLocationReviewKey = @"review";
+    self.addLocationAddressKey = @"address";
     self.addLocationNameKey = @"name";
 
 }
