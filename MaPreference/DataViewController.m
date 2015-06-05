@@ -8,9 +8,13 @@
 
 #import "DataViewController.h"
 #import <Parse/Parse.h>
+#import "AddLocationController.h"
+#import "Constants.h"
+#import "PinLocation.h"
+#import "Location.h"
 
 
-@interface DataViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>{
+@interface DataViewController ()<MKMapViewDelegate, CLLocationManagerDelegate, AddLocationControllerDataSource>{
     CLLocationManager *_locationManager;
     bool initialLocationSet;
 }
@@ -21,14 +25,24 @@
 
 NSString *locationButtonText = @"List Locations";
 NSString *mapButtonText = @"Show Map";
-
+NSMutableArray *allPinLocations;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self loadRootView];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(locationDidChange:)
+                                                 name:currentLocationDidChangeNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(postWasCreated:)
+                                                 name:addLocationCreatedNotification
+                                               object:nil];
 }
+
+
 
 -(void)loadRootView{
     PFUser *currentUser = [PFUser currentUser];
@@ -38,10 +52,10 @@ NSString *mapButtonText = @"Show Map";
     else {
         [self performSegueWithIdentifier:@"showLogin" sender:self];
     }
-    [self setInitialCondition];
+    [self setInitialLocation];
 }
 
--(void)setInitialCondition{
+-(void)setInitialLocation{
     
     [self myLocation];
     
@@ -61,9 +75,28 @@ NSString *mapButtonText = @"Show Map";
         self.locationListTableView.hidden = YES;
         self.mapView.hidden = NO;
         [self.dataMapListToggleButton setTitle:locationButtonText forState:UIControlStateNormal];
+=
+- (void)setCurrentLocation:(CLLocation *)currentLocation {
+    if (self.currentLocation == currentLocation) {
+        return;
+
     }
     
+    _currentLocation = currentLocation;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:currentLocationDidChangeNotification
+                                                            object:nil
+                                                          userInfo:@{ LocationKey : currentLocation } ];
+    });
+    // ...
 }
+
+
+- (void)locationDidChange:(NSNotification *)note {
+    // Update the table with the new points
+}
+
 
 -(void)myLocation{
     initialLocationSet = NO;
@@ -91,10 +124,44 @@ NSString *mapButtonText = @"Show Map";
     }
 }
 
+
+-(IBAction)mapListViewSwitchButton:(id)sender{
+    if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:locationButtonText]) {
+        self.locationListTableView.hidden = NO;
+        self.mapView.hidden = YES;
+        self.dataMapListToggleButton.titleLabel.text = mapButtonText;
+    }
+    else if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:mapButtonText]) {
+        self.locationListTableView.hidden = YES;
+        self.mapView.hidden = NO;
+        self.dataMapListToggleButton.titleLabel.text = locationButtonText;
+    }
+    
+}
+
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:currentLocationDidChangeNotification
+                                                  object:nil];
+}
+
 - (IBAction)logoutUser:(id)sender {
     [PFUser logOut];
     [self loadRootView];
 }
+
+
+- (void)showAddLocationController{
+    AddLocationController *addLocationController = [[AddLocationController alloc]init];
+    addLocationController.dataSource = self;
+    [self.navigationController presentViewController:addLocationController animated:YES completion:nil];
+}
+
+- (CLLocation *)currentLocationForAddLocationController:(AddLocationController *)controller {
+    return self.currentLocation;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

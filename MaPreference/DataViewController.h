@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+//#import "AddLocationController.h"
 
 @interface DataViewController : UIViewController
 
@@ -15,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *locationListTableView;
 
+@property (strong, nonatomic) CLLocation *currentLocation;
 
 @end
