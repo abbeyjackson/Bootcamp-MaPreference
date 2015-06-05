@@ -10,12 +10,16 @@
 #define MaPreference_Constants_h
 
 // Parse keys
-const NSString *addLocationClassName = @"pins";
-const NSString *addLocationCreatedNotification = @"AddLocationCreatedNotification";
+static NSString * const pinLocationClassName = @"pins";
+static NSString * const addLocationCreatedNotification = @"AddLocationCreatedNotification";
+static NSString * const pinLocationUserKey = @"user";
 
 // Notification Centre
-const NSString *currentLocationDidChangeNotification = @"CurrentLocationDidChangeNotification";
-const NSString *FilterDistanceKey = @"filterDistance";
-const NSString *LocationKey = @"location";
+static NSString * const currentLocationDidChangeNotification = @"CurrentLocationDidChangeNotification";
+static NSString * const FilterDistanceKey = @"filterDistance";
+static NSString * const LocationKey = @"location";
+
+
+double const MaximumSearchDistance = 1.0;
 
 #endif

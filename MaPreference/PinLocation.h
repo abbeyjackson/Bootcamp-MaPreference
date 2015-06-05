@@ -8,6 +8,7 @@
 
 #import <Parse/Parse.h>
 
+
 @interface PinLocation : PFObject <PFSubclassing>
 
 @property (nonatomic, strong) NSString * addLocationUserKey;

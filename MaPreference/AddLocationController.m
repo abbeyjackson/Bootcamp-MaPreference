@@ -46,7 +46,7 @@
     PFGeoPoint *currentPoint = [PFGeoPoint geoPointWithLatitude:currentCoordinate.latitude
                                                       longitude:currentCoordinate.longitude];
     
-    PinLocation *pinObject = [PinLocation objectWithClassName:addLocationClassName];
+    PinLocation *pinObject = [PinLocation objectWithClassName:pinLocationClassName];
     pinObject.addLocationNameKey = self.addLocationNameLabel.text;
     pinObject.addLocationAddressKey = self.addLocationAddressLabel.text;
     pinObject.addLocationReviewKey = self.addLocationReviewField.text;

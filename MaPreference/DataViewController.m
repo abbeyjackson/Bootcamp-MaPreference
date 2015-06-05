@@ -10,6 +10,8 @@
 #import <Parse/Parse.h>
 #import "AddLocationController.h"
 #import "Constants.h"
+#import "PinLocation.h"
+#import "Location.h"
 
 
 @interface DataViewController ()<MKMapViewDelegate, CLLocationManagerDelegate, AddLocationControllerDataSource>{
@@ -23,7 +25,7 @@
 
 NSString *locationButtonText = @"List Locations";
 NSString *mapButtonText = @"Show Map";
-
+NSMutableArray *allPinLocations;
 
 
 - (void)viewDidLoad {
@@ -40,7 +42,6 @@ NSString *mapButtonText = @"Show Map";
                                                object:nil];
 }
 
-// PAWWallViewController.m and PAWWallPostsTableViewController.m
 
 
 -(void)loadRootView{
@@ -125,6 +126,7 @@ NSString *mapButtonText = @"Show Map";
     }
     
 }
+
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self
