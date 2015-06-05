@@ -18,4 +18,6 @@
 
 @property (strong, nonatomic) CLLocation *currentLocation;
 
+- (IBAction)unwindToDataView:(UIStoryboardSegue*)sender;
+
 @end
