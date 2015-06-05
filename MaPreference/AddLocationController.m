@@ -31,7 +31,7 @@
 - (IBAction)addLocationDoneButton:(id)sender;
 {   NSLog(@"Done button pressed");
     // Dismiss keyboard and capture any auto-correct
-    [self resignFirstResponder];
+    [self.view endEditing:YES];
     
 }
 
