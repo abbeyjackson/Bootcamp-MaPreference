@@ -10,12 +10,10 @@
 #import <Parse/Parse.h>
 #import "AddLocationController.h"
 #import "Constants.h"
-#import "PinLocation.h"
-#import "Location.h"
 #import "ListViewCell.h"
 
 
-@interface DataViewController ()<MKMapViewDelegate, CLLocationManagerDelegate, AddLocationControllerDataSource, UITableViewDataSource, UITableViewDelegate>{
+@interface DataViewController ()<MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>{
     CLLocationManager *_locationManager;
     bool initialLocationSet;
 }
@@ -33,14 +31,7 @@ NSMutableArray *allPinLocations;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self loadRootView];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(locationDidChange:)
-                                                 name:currentLocationDidChangeNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(postWasCreated:)
-                                                 name:addLocationCreatedNotification
-                                               object:nil];
+
 }
 
 
@@ -102,28 +93,6 @@ NSMutableArray *allPinLocations;
 }
 
 
-- (void)setCurrentLocation:(CLLocation *)currentLocation {
-    if (self.currentLocation == currentLocation) {
-        return;
-
-    }
-    
-    _currentLocation = currentLocation;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:currentLocationDidChangeNotification
-                                                            object:nil
-                                                          userInfo:@{ LocationKey : currentLocation } ];
-    });
-    // ...
-}
-
-
-- (void)locationDidChange:(NSNotification *)note {
-    // Update the table with the new points
-}
-
-
 -(void)myLocation{
     initialLocationSet = NO;
     _locationManager = [[CLLocationManager alloc] init];
@@ -151,11 +120,6 @@ NSMutableArray *allPinLocations;
 }
 
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:currentLocationDidChangeNotification
-                                                  object:nil];
-}
 
 - (IBAction)unwindToDataView:(UIStoryboardSegue*)sender{
     
@@ -169,13 +133,9 @@ NSMutableArray *allPinLocations;
 
 - (void)showAddLocationController{
     AddLocationController *addLocationController = [[AddLocationController alloc]init];
-    addLocationController.dataSource = self;
     [self.navigationController presentViewController:addLocationController animated:YES completion:nil];
 }
 
-- (CLLocation *)currentLocationForAddLocationController:(AddLocationController *)controller {
-    return self.currentLocation;
-}
 
 
 - (void)didReceiveMemoryWarning {

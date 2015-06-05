@@ -7,13 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Parse/Parse.h>
-@class AddLocationController;
-
-
-@protocol AddLocationControllerDataSource <NSObject>
-- (CLLocation *)currentLocationForAddLocationController:(AddLocationController *)controller;
-@end
 
 @interface AddLocationController : UIViewController
 
@@ -22,10 +15,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *addLocationReviewField;
 @property (weak, nonatomic) IBOutlet UIButton *addLocationCancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *addLocationDoneButton;
-
-@property (strong, nonatomic) id<AddLocationControllerDataSource> dataSource;
-
-
 
 
 @end
