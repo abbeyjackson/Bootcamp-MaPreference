@@ -169,6 +169,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="uuX-OD-ipi" id="Bdb-FQ-5VA"/>
+                                    <outlet property="delegate" destination="uuX-OD-ipi" id="myJ-1O-08K"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

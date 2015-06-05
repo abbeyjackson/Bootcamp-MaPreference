@@ -12,9 +12,10 @@
 #import "Constants.h"
 #import "PinLocation.h"
 #import "Location.h"
+#import "ListViewCell.h"
 
 
-@interface DataViewController ()<MKMapViewDelegate, CLLocationManagerDelegate, AddLocationControllerDataSource>{
+@interface DataViewController ()<MKMapViewDelegate, CLLocationManagerDelegate, AddLocationControllerDataSource, UITableViewDataSource, UITableViewDelegate>{
     CLLocationManager *_locationManager;
     bool initialLocationSet;
 }
@@ -70,6 +71,7 @@ NSMutableArray *allPinLocations;
         self.locationListTableView.hidden = NO;
         self.mapView.hidden = YES;
         [self.dataMapListToggleButton setTitle:mapButtonText forState:UIControlStateNormal];
+        [self.locationListTableView reloadData];
     }
     else if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:mapButtonText]) {
         self.locationListTableView.hidden = YES;
@@ -77,6 +79,28 @@ NSMutableArray *allPinLocations;
         [self.dataMapListToggleButton setTitle:locationButtonText forState:UIControlStateNormal];
     }
 }
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return 1;
+}
+
+
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+     ListViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"locationCell" forIndexPath:indexPath];
+    return cell;
+}
+
 
 - (void)setCurrentLocation:(CLLocation *)currentLocation {
     if (self.currentLocation == currentLocation) {
