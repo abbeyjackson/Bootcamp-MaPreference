@@ -75,7 +75,9 @@ NSMutableArray *allPinLocations;
         self.locationListTableView.hidden = YES;
         self.mapView.hidden = NO;
         [self.dataMapListToggleButton setTitle:locationButtonText forState:UIControlStateNormal];
-=
+    }
+}
+
 - (void)setCurrentLocation:(CLLocation *)currentLocation {
     if (self.currentLocation == currentLocation) {
         return;
@@ -122,21 +124,6 @@ NSMutableArray *allPinLocations;
         
         initialLocationSet = YES;
     }
-}
-
-
--(IBAction)mapListViewSwitchButton:(id)sender{
-    if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:locationButtonText]) {
-        self.locationListTableView.hidden = NO;
-        self.mapView.hidden = YES;
-        self.dataMapListToggleButton.titleLabel.text = mapButtonText;
-    }
-    else if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:mapButtonText]) {
-        self.locationListTableView.hidden = YES;
-        self.mapView.hidden = NO;
-        self.dataMapListToggleButton.titleLabel.text = locationButtonText;
-    }
-    
 }
 
 
