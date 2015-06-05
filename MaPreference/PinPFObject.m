@@ -11,9 +11,10 @@
 
 @implementation PinPFObject
 
-@dynamic user;
+@dynamic usernameString;
 @dynamic location;
 @dynamic businessName;
+@dynamic userID;
 
 
 +(void)load {

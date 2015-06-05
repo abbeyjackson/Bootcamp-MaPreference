@@ -12,9 +12,10 @@
 
 @interface PinPFObject : PFObject<PFSubclassing>
 
-@property (nonatomic, strong) PFUser *user;
+@property (nonatomic, strong) NSString *usernameString;
 @property (nonatomic, strong) PFGeoPoint *location;
 @property (nonatomic, strong) NSString *businessName;
+@property (nonatomic, strong) NSString *userID;
 
 + (NSString *)parseClassName;
 
