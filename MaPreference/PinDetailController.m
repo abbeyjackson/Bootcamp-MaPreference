@@ -37,15 +37,14 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    //will equal 1(header row) plus count of reviews
+    return 2;
 }
 
 - (IBAction)unwindToPinDetail:(UIStoryboardSegue*)sender{
@@ -59,21 +58,21 @@
 //}
 
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    LocationReviewCell *locationCell = [tableView dequeueReusableCellWithIdentifier:@"locationReviewCell" forIndexPath:indexPath];
-//    LocationInfoCell *reviewCell = [tableView dequeueReusableCellWithIdentifier:@"locationInfoCell" forIndexPath:indexPath];
-//    
-////    if (indexPath.row == 0) {
-////        return tableView.rowHeight = 200;
-////    }
-////    else {
-////        tableView.estimatedRowHeight = 100.0;
-////        return tableView.rowHeight = UITableViewAutomaticDimension;
-////    }
-////    
-//    return cell;
-//}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    LocationInfoCell *locationCell = [tableView dequeueReusableCellWithIdentifier:@"locationInfoCell" forIndexPath:indexPath];
+    LocationReviewCell *reviewCell = [tableView dequeueReusableCellWithIdentifier:@"locationReviewCell" forIndexPath:indexPath];
+    
+    if (indexPath.row == 1) {
+        
+        return locationCell;
+    }
+    else {
+        return reviewCell;
+    }
+    
+    return nil;
+}
 
 
 /*
