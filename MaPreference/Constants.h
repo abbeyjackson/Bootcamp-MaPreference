@@ -20,6 +20,6 @@ static NSString * const FilterDistanceKey = @"filterDistance";
 static NSString * const LocationKey = @"location";
 
 
-double const MaximumSearchDistance = 1.0;
+//double const MaximumSearchDistance = 1.0;
 
 #endif
