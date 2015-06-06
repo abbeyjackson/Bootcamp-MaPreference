@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@class PFUser;
+@class PinPFObject;
 
 @interface AddReviewController : UIViewController
 
@@ -17,5 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *addReviewCancelButton;
 @property (weak, nonatomic) IBOutlet UIButton *addReviewDoneButton;
 
+@property (strong, nonatomic) PFUser *currentUser;
+@property (strong, nonatomic) PinPFObject *pin;
 
 @end

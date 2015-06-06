@@ -33,7 +33,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (PinReviewPFObject*)saveReview:(PFUser *)currentUser isAlsoAddingPin:(BOOL)isAddingPin {
+- (void)saveReview:(PFUser *)currentUser isAlsoAddingPin:(BOOL)isAddingPin {
     PinReviewPFObject *review = [PinReviewPFObject object];
     review.userReview = self.addLocationReviewField.text;
     review.createdBy = currentUser.username;
@@ -80,7 +80,6 @@
             // Add reload map and reload tableview
         });
     }];
-    return review;
 }
 
 /*-(void)getAddessInfo:(NSString*)address{

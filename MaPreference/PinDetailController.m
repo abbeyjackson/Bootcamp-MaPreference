@@ -9,8 +9,9 @@
 #import "PinDetailController.h"
 #import "LocationInfoCell.h"
 #import "LocationReviewCell.h"
+#import "PinPFObject.h"
 
-@interface PinDetailController ()<UITableViewDelegate>
+@interface PinDetailController ()<UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -50,6 +51,15 @@
 - (IBAction)unwindToPinDetail:(UIStoryboardSegue*)sender{
     
     // Pull any data from the view controller which initiated the unwind segue.
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"showAddReview"]) {
+        //pass forward pin object
+    }
+    
 }
 
 
