@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 #import <CoreLocation/CoreLocation.h>
+@class MKPointAnnotation;
 
 @interface PinPFObject : PFObject<PFSubclassing>
 
@@ -23,5 +24,7 @@
 + (NSString *)parseClassName;
 
 -(CLLocation *)convertGeoPointToCLLocation;
+
+- (MKPointAnnotation *) annotation:(PinPFObject *)pinObject;
 
 @end

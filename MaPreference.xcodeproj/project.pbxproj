@@ -10,6 +10,7 @@
 		290849D3C580106F4AE03B85 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0513993EE333F1EB827D4A1 /* libPods.a */; };
 		A7A59D701B1F7BA000887065 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A59D6F1B1F7BA000887065 /* LoginViewController.m */; };
 		A7A59D731B1F7BAC00887065 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A59D721B1F7BAC00887065 /* SignUpViewController.m */; };
+		A7B10F681B22EF6600DD85EE /* PinAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7B10F671B22EF6600DD85EE /* PinAnnotationView.m */; };
 		F66EF5531B1E2B3E005C972A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5521B1E2B3E005C972A /* main.m */; };
 		F66EF5561B1E2B3E005C972A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5551B1E2B3E005C972A /* AppDelegate.m */; };
 		F66EF5591B1E2B3E005C972A /* MaPreference.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F66EF5571B1E2B3E005C972A /* MaPreference.xcdatamodeld */; };
@@ -50,6 +51,8 @@
 		A7A59D6F1B1F7BA000887065 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		A7A59D711B1F7BAC00887065 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		A7A59D721B1F7BAC00887065 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		A7B10F661B22EF6600DD85EE /* PinAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinAnnotationView.h; sourceTree = "<group>"; };
+		A7B10F671B22EF6600DD85EE /* PinAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinAnnotationView.m; sourceTree = "<group>"; };
 		F0513993EE333F1EB827D4A1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66EF54D1B1E2B3E005C972A /* MaPreference.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaPreference.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F66EF5511B1E2B3E005C972A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -84,7 +87,7 @@
 		F6E917911B21399D001CC404 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		F6E9179D1B225261001CC404 /* PinPFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinPFObject.h; sourceTree = "<group>"; };
 		F6E9179E1B225261001CC404 /* PinPFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinPFObject.m; sourceTree = "<group>"; };
-		F6E9179F1B225261001CC404 /* Tasks.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Tasks.rtf; sourceTree = "<group>"; };
+		F6E9179F1B225261001CC404 /* Tasks.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Tasks.rtf; path = MaPreference/Tasks.rtf; sourceTree = "<group>"; };
 		F6E917A71B22B1EB001CC404 /* PinReviewPFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinReviewPFObject.h; sourceTree = "<group>"; };
 		F6E917A81B22B1EB001CC404 /* PinReviewPFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinReviewPFObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +124,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A7B10F651B22EF3E00DD85EE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A7B10F661B22EF6600DD85EE /* PinAnnotationView.h */,
+				A7B10F671B22EF6600DD85EE /* PinAnnotationView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		CBF2FBCD752BE0C6FDFBE426 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +148,7 @@
 		F66EF5441B1E2B3E005C972A = {
 			isa = PBXGroup;
 			children = (
+				F6E9179F1B225261001CC404 /* Tasks.rtf */,
 				F66EF54F1B1E2B3E005C972A /* MaPreference */,
 				F66EF56C1B1E2B3E005C972A /* MaPreferenceTests */,
 				F66EF54E1B1E2B3E005C972A /* Products */,
@@ -156,7 +169,7 @@
 		F66EF54F1B1E2B3E005C972A /* MaPreference */ = {
 			isa = PBXGroup;
 			children = (
-				F6E9179F1B225261001CC404 /* Tasks.rtf */,
+				A7B10F651B22EF3E00DD85EE /* Views */,
 				F6E917831B20DEA9001CC404 /* Model */,
 				F66EF58B1B1E313F005C972A /* Cells */,
 				F66EF58C1B1E3158005C972A /* ViewControllers */,
@@ -380,6 +393,7 @@
 				F6E917A91B22B1EB001CC404 /* PinReviewPFObject.m in Sources */,
 				F66EF5981B1EBAB4005C972A /* AddLocationController.m in Sources */,
 				F66EF5921B1EB9F4005C972A /* DataViewController.m in Sources */,
+				A7B10F681B22EF6600DD85EE /* PinAnnotationView.m in Sources */,
 				A7A59D731B1F7BAC00887065 /* SignUpViewController.m in Sources */,
 				F66EF5841B1E30F9005C972A /* LocationReviewCell.m in Sources */,
 				F66EF5591B1E2B3E005C972A /* MaPreference.xcdatamodeld in Sources */,

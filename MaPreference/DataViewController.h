@@ -20,7 +20,7 @@
 
 @property (strong, nonatomic) PFGeoPoint *currentLocation;
 @property (strong, nonatomic) PinPFObject *pin;
-@property (strong, nonatomic) NSArray *nearbyPins;
+@property (strong, nonatomic) NSMutableArray *nearbyPins;
 
 - (IBAction)unwindToDataView:(UIStoryboardSegue*)sender;
 

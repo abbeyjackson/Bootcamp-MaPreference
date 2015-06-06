@@ -12,6 +12,8 @@
 #import "Constants.h"
 #import "ListViewCell.h"
 #import "PinPFObject.h"
+#import "PinDetailController.h"
+#import "PinAnnotationView.h"
 
 
 @interface DataViewController ()<MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>{
@@ -33,19 +35,7 @@ NSMutableArray *allPinLocations;
     // Do any additional setup after loading the view.
     self.currentLocation = [PFGeoPoint geoPoint];
     [self loadRootView];
-//    PFQuery
-//    PinPFObject *pinObject = [PinPFObject ]
-//    MKPointAnnotation *marker= [pinObject annotation:pinObject];
-//    
-//    [self.mapView addAnnotation:marker];
-//}
-//
-//
-//dispatch_async(dispatch_get_main_queue(), ^{
-//    [self.mapView reloadInputViews];
-//});
 
-    [self getNearbyPins];
 }
 
 
@@ -82,6 +72,7 @@ NSMutableArray *allPinLocations;
         self.locationListTableView.hidden = YES;
         self.mapView.hidden = NO;
         [self.dataMapListToggleButton setTitle:locationButtonText forState:UIControlStateNormal];
+        [self.mapView reloadInputViews];
     }
 }
 
@@ -131,6 +122,7 @@ NSMutableArray *allPinLocations;
         
         initialLocationSet = YES;
     }
+    [self getNearbyPins];
 }
 
 -(void)getNearbyPins{
@@ -140,9 +132,27 @@ NSMutableArray *allPinLocations;
             self.currentLocation = geoPoint;
             PFQuery *query = [PFQuery queryWithClassName:@"Location"];
             [query whereKey:@"location" nearGeoPoint:self.currentLocation withinMiles:2.0];
-            self.nearbyPins = [query findObjects];
+            
+            [query findObjectsInBackgroundWithBlock:^(NSArray *locations, NSError *error) {
+                if (!error) {
+                    
+                    NSMutableArray *objectIds = [[NSMutableArray alloc] init];
+                    
+                    // Add ambassador ids into query
+                    for (PinPFObject *locationX in locations) {
+                        [objectIds addObject:[PFObject objectWithoutDataWithClassName:@"Locations" objectId: locationX.objectId]];
+                        [self.nearbyPins addObject:locationX];
+                        MKPointAnnotation *marker= [locationX annotation:locationX];
+                        [self.mapView addAnnotation:marker];
+
+                    }
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.mapView reloadInputViews];
+                    });
+                }
+            }];
         }
-    }];
+     }];
 }
 
 - (IBAction)unwindToDataView:(UIStoryboardSegue*)sender{
@@ -194,18 +204,21 @@ NSMutableArray *allPinLocations;
 
 - (void)mapView:(MKMapView *)mapView
 didSelectAnnotationView:(MKAnnotationView *)view {
-    
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Click" message:@"You Done Clicked" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
     [alertView show];
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    id <MKAnnotation> annotation = [view annotation];
+    if ([annotation isKindOfClass:[PinAnnotationView class]])
+    {
+        NSLog(@"pinview");
+        PinDetailController *dvc = [[self storyboard] instantiateViewControllerWithIdentifier:@"PinDetailController"];
+
+        [self.navigationController pushViewController:dvc animated:YES];
+    }
 }
-*/
+
 
 @end
