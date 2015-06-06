@@ -30,6 +30,7 @@
 		F66EF5A81B200574005C972A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F66EF5A71B200574005C972A /* CoreLocation.framework */; };
 		F6E917A01B225261001CC404 /* PinPFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F6E9179E1B225261001CC404 /* PinPFObject.m */; };
 		F6E917A11B225261001CC404 /* Tasks.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F6E9179F1B225261001CC404 /* Tasks.rtf */; };
+		F6E917A91B22B1EB001CC404 /* PinReviewPFObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F6E917A81B22B1EB001CC404 /* PinReviewPFObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,8 @@
 		F6E9179D1B225261001CC404 /* PinPFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinPFObject.h; sourceTree = "<group>"; };
 		F6E9179E1B225261001CC404 /* PinPFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinPFObject.m; sourceTree = "<group>"; };
 		F6E9179F1B225261001CC404 /* Tasks.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Tasks.rtf; sourceTree = "<group>"; };
+		F6E917A71B22B1EB001CC404 /* PinReviewPFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinReviewPFObject.h; sourceTree = "<group>"; };
+		F6E917A81B22B1EB001CC404 /* PinReviewPFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinReviewPFObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +232,8 @@
 		F6E917831B20DEA9001CC404 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F6E917A71B22B1EB001CC404 /* PinReviewPFObject.h */,
+				F6E917A81B22B1EB001CC404 /* PinReviewPFObject.m */,
 				F6E9179D1B225261001CC404 /* PinPFObject.h */,
 				F6E9179E1B225261001CC404 /* PinPFObject.m */,
 				F6E917911B21399D001CC404 /* Constants.h */,
@@ -372,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6E917A91B22B1EB001CC404 /* PinReviewPFObject.m in Sources */,
 				F66EF5981B1EBAB4005C972A /* AddLocationController.m in Sources */,
 				F66EF5921B1EB9F4005C972A /* DataViewController.m in Sources */,
 				A7A59D731B1F7BAC00887065 /* SignUpViewController.m in Sources */,
