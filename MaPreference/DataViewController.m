@@ -11,6 +11,7 @@
 #import "AddLocationController.h"
 #import "Constants.h"
 #import "ListViewCell.h"
+#import "PinPFObject.h"
 
 
 @interface DataViewController ()<MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>{
@@ -30,8 +31,9 @@ NSMutableArray *allPinLocations;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.currentLocation = [PFGeoPoint geoPoint];
     [self loadRootView];
-
+    [self getNearbyPins];
 }
 
 
@@ -119,7 +121,17 @@ NSMutableArray *allPinLocations;
     }
 }
 
-
+-(void)getNearbyPins{
+    
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+        if (!error) {
+            self.currentLocation = geoPoint;
+            PFQuery *query = [PFQuery queryWithClassName:@"Location"];
+            [query whereKey:@"location" nearGeoPoint:self.currentLocation withinMiles:2.0];
+            self.nearbyPins = [query findObjects];
+        }
+    }];
+}
 
 - (IBAction)unwindToDataView:(UIStoryboardSegue*)sender{
     

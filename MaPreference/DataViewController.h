@@ -9,13 +9,18 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
+@class PinPFObject;
+@class PFGeoPoint;
+
 @interface DataViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIButton *dataMapListToggleButton;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITableView *locationListTableView;
 
-@property (strong, nonatomic) CLLocation *currentLocation;
+@property (strong, nonatomic) PFGeoPoint *currentLocation;
+@property (strong, nonatomic) PinPFObject *pin;
+@property (strong, nonatomic) NSArray *nearbyPins;
 
 - (IBAction)unwindToDataView:(UIStoryboardSegue*)sender;
 
