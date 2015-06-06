@@ -15,6 +15,8 @@
 @dynamic location;
 @dynamic businessName;
 @dynamic userID;
+@dynamic addressString;
+@dynamic reviews;
 
 
 +(void)load {

@@ -16,6 +16,9 @@
 @property (nonatomic, strong) PFGeoPoint *location;
 @property (nonatomic, strong) NSString *businessName;
 @property (nonatomic, strong) NSString *userID;
+@property (nonatomic, strong) NSString *addressString;
+@property (nonatomic, strong) NSMutableArray *reviews;
+
 
 + (NSString *)parseClassName;
 
