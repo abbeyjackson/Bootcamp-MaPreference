@@ -8,6 +8,8 @@
 
 #import "PinPFObject.h"
 #import <Parse/PFObject+Subclass.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @implementation PinPFObject
 
@@ -39,6 +41,14 @@
     
     return location;
     
+}
+
+- (MKPointAnnotation *) annotation:(PinPFObject *)pinObject {
+    
+    MKPointAnnotation *marker = [[MKPointAnnotation alloc] init];
+    marker.coordinate = [pinObject convertGeoPointToCLLocation].coordinate;
+    
+    return marker;
 }
 
 @end

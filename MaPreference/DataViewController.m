@@ -31,6 +31,17 @@ NSMutableArray *allPinLocations;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self loadRootView];
+//    PFQuery
+//    PinPFObject *pinObject = [PinPFObject ]
+//    MKPointAnnotation *marker= [pinObject annotation:pinObject];
+//    
+//    [self.mapView addAnnotation:marker];
+//}
+//
+//
+//dispatch_async(dispatch_get_main_queue(), ^{
+//    [self.mapView reloadInputViews];
+//});
 
 }
 
@@ -143,6 +154,37 @@ NSMutableArray *allPinLocations;
     // Dispose of any resources that can be recreated.
 }
 
+- (MKAnnotationView *)mapView:(MKMapView *)mapView
+            viewForAnnotation:(id<MKAnnotation>)annotation {
+    
+    if (annotation == self.mapView.userLocation){
+        return nil; //default to blue dot
+    }
+    
+    static NSString* annotationIdentifier = @"pinObject";
+    
+    MKPinAnnotationView* pinView = (MKPinAnnotationView *)
+    [self.mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
+    
+    if (!pinView) {
+        // if an existing pin view was not available, create one
+        pinView = [[MKPinAnnotationView alloc]
+                   initWithAnnotation:annotation reuseIdentifier:annotationIdentifier];
+    }
+    
+    pinView.canShowCallout = YES;
+    pinView.pinColor = MKPinAnnotationColorGreen;
+    pinView.calloutOffset = CGPointMake(-15, 0);
+    
+    return pinView;
+}
+
+- (void)mapView:(MKMapView *)mapView
+didSelectAnnotationView:(MKAnnotationView *)view {
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Click" message:@"You Done Clicked" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+    [alertView show];
+}
 /*
 #pragma mark - Navigation
 
