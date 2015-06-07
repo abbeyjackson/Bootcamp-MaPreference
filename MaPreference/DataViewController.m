@@ -125,6 +125,16 @@ NSMutableArray *allPinLocations;
     [self getNearbyPins];
 }
 
+
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    MKAnnotationView* annotationView = [mapView viewForAnnotation:userLocation];
+    annotationView.canShowCallout = NO;
+    
+}
+
+
 -(void)getNearbyPins{
     
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
@@ -139,10 +149,12 @@ NSMutableArray *allPinLocations;
                     NSMutableArray *objectIds = [[NSMutableArray alloc] init];
                     
                     // Add ambassador ids into query
-                    for (PinPFObject *locationX in locations) {
-                        [objectIds addObject:[PFObject objectWithoutDataWithClassName:@"Locations" objectId: locationX.objectId]];
-                        [self.nearbyPins addObject:locationX];
-                        MKPointAnnotation *marker= [locationX annotation:locationX];
+                    for (PinPFObject *location in locations) {
+                        [objectIds addObject:[PFObject objectWithoutDataWithClassName:@"Locations" objectId: location.objectId]];
+                        [self.nearbyPins addObject:location];
+                        MKPointAnnotation *marker= [location annotation:location];
+                        marker.title = location.businessName;
+                        marker.subtitle = location.addressString;
                         [self.mapView addAnnotation:marker];
 
                     }
@@ -174,50 +186,72 @@ NSMutableArray *allPinLocations;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    
+    
+    
+    
+    
+    
     // Dispose of any resources that can be recreated.
 }
+//
+//- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+//    
+//    if (annotation == self.mapView.userLocation){
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView
-            viewForAnnotation:(id<MKAnnotation>)annotation {
+//        return nil; //default to blue dot
+//    }
+//
+//    
+//    MKAnnotationView *pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"loc"];
+//    pinView.canShowCallout = YES;
+//    pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     
-    if (annotation == self.mapView.userLocation){
-        return nil; //default to blue dot
-    }
+//    return pinView;
     
-    static NSString* annotationIdentifier = @"pinObject";
-    
-    MKPinAnnotationView* pinView = (MKPinAnnotationView *)
-    [self.mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
-    
-    if (!pinView) {
-        // if an existing pin view was not available, create one
-        pinView = [[MKPinAnnotationView alloc]
-                   initWithAnnotation:annotation reuseIdentifier:annotationIdentifier];
-    }
-    
-    pinView.canShowCallout = YES;
-    pinView.pinColor = MKPinAnnotationColorGreen;
-    pinView.calloutOffset = CGPointMake(-15, 0);
-    
-    return pinView;
-}
+//
+//    static NSString* annotationIdentifier = @"pinObject";
+//    
+//    MKPinAnnotationView* pinView = (MKPinAnnotationView *)
+//    [self.mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
+//    
+//    if (!pinView) {
+//        // if an existing pin view was not available, create one
+//        pinView = [[MKPinAnnotationView alloc]
+//                   initWithAnnotation:annotation reuseIdentifier:annotationIdentifier];
+//    }
+//    
+//    pinView.canShowCallout = YES;
+//    pinView.pinColor = MKPinAnnotationColorGreen;
+//    pinView.calloutOffset = CGPointMake(-15, 0);
+//    
+//    return pinView;
 
-- (void)mapView:(MKMapView *)mapView
-didSelectAnnotationView:(MKAnnotationView *)view {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Click" message:@"You Done Clicked" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-    [alertView show];
-}
+//}
 
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
-{
-    id <MKAnnotation> annotation = [view annotation];
-    if ([annotation isKindOfClass:[PinAnnotationView class]])
-    {
-        NSLog(@"pinview");
-        PinDetailController *dvc = [[self storyboard] instantiateViewControllerWithIdentifier:@"PinDetailController"];
+////////////////////////////////////////////
+//- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+//    
+//    
+//    
+//    
+////    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Click" message:@"You Done Clicked" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+////    [alertView show];
+//}
 
-        [self.navigationController pushViewController:dvc animated:YES];
-    }
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    
+    [self performSegueWithIdentifier:@"showPinDetail" sender:view];
+    
+//    id <MKAnnotation> annotation = [view annotation];
+//    if ([annotation isKindOfClass:[PinAnnotationView class]])
+//    {
+//        NSLog(@"pinview");
+//        PinDetailController *dvc = [[self storyboard] instantiateViewControllerWithIdentifier:@"PinDetailController"];
+//
+//        [self.navigationController pushViewController:dvc animated:YES];
+//    }
+    
 }
 
 

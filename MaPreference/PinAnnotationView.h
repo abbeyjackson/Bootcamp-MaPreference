@@ -30,15 +30,15 @@
 @property (nonatomic, assign) BOOL animatesDrop;
 @property (nonatomic, assign, readonly) MKPinAnnotationColor pinColor;
 
-// Designated initializer.
-- (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate
-                          andTitle:(NSString *)title
-                       andSubtitle:(NSString *)subtitle;
-- (instancetype)initWithPFObject:(PFObject *)object;
+//// Designated initializer.
+//- (instancetype)initWithCoordinate:(CLLocationCoordinate2D)coordinate
+//                          andTitle:(NSString *)title
+//                       andSubtitle:(NSString *)subtitle;
+//- (instancetype)initWithPFObject:(PFObject *)object;
 
-
-//- (void)setTitleAndSubtitleOutsideDistance:(BOOL)outside;
-
-+ (MKAnnotationView *)createViewAnnotationForMapView:(MKMapView *)mapView annotation:(id <MKAnnotation>)annotation;
+//
+////- (void)setTitleAndSubtitleOutsideDistance:(BOOL)outside;
+//
+//+ (MKAnnotationView *)createViewAnnotationForMapView:(MKMapView *)mapView annotation:(id <MKAnnotation>)annotation;
 
 @end
