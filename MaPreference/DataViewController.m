@@ -27,7 +27,6 @@
 
 NSString *locationButtonText = @"List Locations";
 NSString *mapButtonText = @"Show Map";
-NSMutableArray *allPinLocations;
 
 #pragma mark - View with User Current Location
 
@@ -35,6 +34,7 @@ NSMutableArray *allPinLocations;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.currentLocation = [PFGeoPoint geoPoint];
+    self.nearbyPins = [NSMutableArray array];
     [self loadRootView];
 }
 
@@ -82,7 +82,9 @@ NSMutableArray *allPinLocations;
         
         initialLocationSet = YES;
     }
+    
     [self getNearbyPins];
+    
 }
 
 
@@ -107,39 +109,45 @@ NSMutableArray *allPinLocations;
         if (!error) {
             self.currentLocation = geoPoint;
             PFQuery *query = [PFQuery queryWithClassName:@"Location"];
-            [query whereKey:@"location" nearGeoPoint:self.currentLocation withinMiles:2.0];
+            [query whereKey:@"location" nearGeoPoint:self.currentLocation withinKilometers:2.0];
             
             [query findObjectsInBackgroundWithBlock:^(NSArray *locations, NSError *error) {
                 if (!error) {
-                    
-                    NSMutableArray *objectIds = [[NSMutableArray alloc] init];
+                    self.nearbyPins = [NSMutableArray arrayWithArray:locations];
                     
                     // Add ambassador ids into query
                     for (PinPFObject *location in locations) {
-                        [objectIds addObject:[PFObject objectWithoutDataWithClassName:@"Locations" objectId: location.objectId]];
-                        [self.nearbyPins addObject:location];
+                        
+                        
                         PinAnnotation *marker = [location makeAnnotation:location];
                         marker.title = location.businessName;
                         marker.subtitle = location.addressString;
                         
                         [self.mapView addAnnotation:marker];
-
+                        
                     }
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.mapView reloadInputViews];
+                        
                     });
                 }
             }];
         }
-     }];
+    }];
 }
+
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([[segue identifier] isEqualToString:@"showPinDetail"]) {
-        PinAnnotation *location = sender;
-        [[segue destinationViewController] setAnnotation:location];
+        
+        PinAnnotation *annotationView = (PinAnnotation*) sender;
+        
+        NSLog(@"pinAnnoation.parseObjectID is: %@", annotationView.parseObjectID);
+        
+        [[segue destinationViewController] setParseObjectID:annotationView.parseObjectID];
     }
-
+    
 }
 
 - (IBAction)unwindToDataView:(UIStoryboardSegue*)sender{
@@ -164,11 +172,6 @@ NSMutableArray *allPinLocations;
 
 
 
--(void)calloutTapped:(id) sender{
-    
-    [self performSegueWithIdentifier:@"showPinDetail" sender:self];
-}
-
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     
     if (annotation == self.mapView.userLocation){
@@ -176,6 +179,7 @@ NSMutableArray *allPinLocations;
     }
     
     static NSString* annotationIdentifier = @"pinObject";
+    
     
     MKPinAnnotationView* pinView = (MKPinAnnotationView *)
     [self.mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
@@ -188,22 +192,29 @@ NSMutableArray *allPinLocations;
     
     pinView.canShowCallout = YES;
     pinView.pinColor = MKPinAnnotationColorGreen;
-    pinView.calloutOffset = CGPointMake(-15, 0);
-
+    pinView.annotation = annotation;
+    pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    
+    //pinView.calloutOffset = CGPointMake(-15, 0);
+    
     return pinView;
 }
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     
-    UITapGestureRecognizer *tapGesture =
-    [[UITapGestureRecognizer alloc] initWithTarget:self
-                                            action:@selector(calloutTapped:)];
-    [view addGestureRecognizer:tapGesture];
+    NSLog(@"reuseIdentifier is %@", view.reuseIdentifier);
+    
 }
 
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    
+    if ([view annotation]){
+        
+        PinAnnotation *pinAnnotation = view.annotation;
+        
+        [self performSegueWithIdentifier:@"showPinDetail" sender:pinAnnotation];
+        
+    }
     
     
 }
@@ -217,12 +228,16 @@ NSMutableArray *allPinLocations;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 1;
+    return self.nearbyPins.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ListViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"locationCell" forIndexPath:indexPath];
+    PinPFObject *object = self.nearbyPins[indexPath.row];
+    NSLog(@"%ld", (long)indexPath.row);
+    cell.listNameLabel.text = object.businessName;
+    cell.listAddressLabel.text = object.addressString;
     return cell;
 }
 

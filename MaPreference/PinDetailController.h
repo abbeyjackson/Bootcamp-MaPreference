@@ -12,7 +12,7 @@
 @interface PinDetailController : UITableViewController
 
 
-@property (strong, nonatomic) PinAnnotation *annotation;
+@property (strong, nonatomic) NSString *parseObjectID;
 
 - (IBAction)unwindToPinDetail:(UIStoryboardSegue*)sender;
 
