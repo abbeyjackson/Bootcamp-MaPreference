@@ -29,16 +29,14 @@ NSString *locationButtonText = @"List Locations";
 NSString *mapButtonText = @"Show Map";
 NSMutableArray *allPinLocations;
 
+#pragma mark - View with User Current Location
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.currentLocation = [PFGeoPoint geoPoint];
     [self loadRootView];
-
 }
-
-
 
 -(void)loadRootView{
     PFUser *currentUser = [PFUser currentUser];
@@ -61,43 +59,6 @@ NSMutableArray *allPinLocations;
     self.locationListTableView.hidden = YES;
 }
 
--(IBAction)mapListViewSwitchButton:(id)sender{
-    if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:locationButtonText]) {
-        self.locationListTableView.hidden = NO;
-        self.mapView.hidden = YES;
-        [self.dataMapListToggleButton setTitle:mapButtonText forState:UIControlStateNormal];
-        [self.locationListTableView reloadData];
-    }
-    else if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:mapButtonText]) {
-        self.locationListTableView.hidden = YES;
-        self.mapView.hidden = NO;
-        [self.dataMapListToggleButton setTitle:locationButtonText forState:UIControlStateNormal];
-        [self.mapView reloadInputViews];
-    }
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return 1;
-}
-
-
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-     ListViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"locationCell" forIndexPath:indexPath];
-    return cell;
-}
-
-
 -(void)myLocation{
     initialLocationSet = NO;
     _locationManager = [[CLLocationManager alloc] init];
@@ -106,7 +67,6 @@ NSMutableArray *allPinLocations;
     [_locationManager startUpdatingLocation];
     _locationManager.delegate = self;
 }
-
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     CLLocation *location = [locations firstObject];
@@ -126,6 +86,7 @@ NSMutableArray *allPinLocations;
 }
 
 
+<<<<<<< HEAD
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
@@ -133,6 +94,11 @@ NSMutableArray *allPinLocations;
     MKAnnotationView* annotationView = [mapView viewForAnnotation:userLocation];
     annotationView.canShowCallout = NO;
     
+=======
+- (IBAction)logoutUser:(id)sender {
+    [PFUser logOut];
+    [self loadRootView];
+>>>>>>> 498a04a1adfa1b54b4bb534ee3473f4fb56bbb2f
 }
 
 
@@ -180,10 +146,7 @@ NSMutableArray *allPinLocations;
     
 }
 
-- (IBAction)logoutUser:(id)sender {
-    [PFUser logOut];
-    [self loadRootView];
-}
+
 
 
 - (void)showAddLocationController{
@@ -191,6 +154,7 @@ NSMutableArray *allPinLocations;
     [self.navigationController presentViewController:addLocationController animated:YES completion:nil];
 }
 
+<<<<<<< HEAD
 
 
 - (void)didReceiveMemoryWarning {
@@ -202,6 +166,29 @@ NSMutableArray *allPinLocations;
 
 
 -(void)calloutTapped:(id) sender{
+=======
+- (MKAnnotationView *)mapView:(MKMapView *)mapView
+            viewForAnnotation:(id<MKAnnotation>)annotation {
+    
+    if (annotation == self.mapView.userLocation){
+        return nil; //default to blue dot
+    }
+    
+    static NSString* annotationIdentifier = @"pinObject";
+    
+    MKPinAnnotationView* pinView = (MKPinAnnotationView *)
+    [self.mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
+    
+    if (!pinView) {
+        // if an existing pin view was not available, create one
+        pinView = [[MKPinAnnotationView alloc]
+                   initWithAnnotation:annotation reuseIdentifier:annotationIdentifier];
+    }
+    
+    pinView.canShowCallout = YES;
+    pinView.pinColor = MKPinAnnotationColorGreen;
+    pinView.calloutOffset = CGPointMake(-15, 0);
+>>>>>>> 498a04a1adfa1b54b4bb534ee3473f4fb56bbb2f
     
     [self performSegueWithIdentifier:@"showPinDetail" sender:self];
 }
@@ -222,5 +209,37 @@ NSMutableArray *allPinLocations;
     
 }
 
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ListViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"locationCell" forIndexPath:indexPath];
+    return cell;
+}
+
+-(IBAction)mapListViewSwitchButton:(id)sender{
+    if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:locationButtonText]) {
+        self.locationListTableView.hidden = NO;
+        self.mapView.hidden = YES;
+        [self.dataMapListToggleButton setTitle:mapButtonText forState:UIControlStateNormal];
+        [self.locationListTableView reloadData];
+    }
+    else if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:mapButtonText]) {
+        self.locationListTableView.hidden = YES;
+        self.mapView.hidden = NO;
+        [self.dataMapListToggleButton setTitle:locationButtonText forState:UIControlStateNormal];
+        [self.mapView reloadInputViews];
+    }
+}
 
 @end
