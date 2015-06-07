@@ -145,7 +145,11 @@ NSString *mapButtonText = @"Show Map";
         
         NSLog(@"pinAnnoation.parseObjectID is: %@", annotationView.parseObjectID);
         
-        [[segue destinationViewController] setParseObjectID:annotationView.parseObjectID];
+        PinDetailController *destinationVC = [segue destinationViewController];
+        destinationVC.parseObjectID = annotationView.parseObjectID;
+        destinationVC.businessName = annotationView.businessName;
+        destinationVC.businessAddress = annotationView.businessAddress;
+        destinationVC.reviews = annotationView.reviews;
     }
     
 }

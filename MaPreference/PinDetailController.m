@@ -29,8 +29,7 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    NSLog(@"%@", self.parseObjectID);
+    NSLog(@"Business name from viewDidLoad: %@", self.businessName);
     
 }
 

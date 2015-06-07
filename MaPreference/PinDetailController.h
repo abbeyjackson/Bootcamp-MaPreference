@@ -12,7 +12,10 @@
 @interface PinDetailController : UITableViewController
 
 
-@property (strong, nonatomic) NSString *parseObjectID;
+@property (strong, nonatomic) NSString *businessName;
+@property (strong, nonatomic) NSString *businessAddress;
+@property (nonatomic, strong) NSString *parseObjectID;
+@property (nonatomic, strong) NSMutableArray *reviews;
 
 - (IBAction)unwindToPinDetail:(UIStoryboardSegue*)sender;
 
