@@ -20,11 +20,11 @@
 @property (nonatomic, strong) NSString *addressString;
 @property (nonatomic, strong) NSMutableArray *reviews;
 
-
 + (NSString *)parseClassName;
+
+- (MKPointAnnotation *) makeAnnotation:(PinPFObject *)pinObject;
 
 -(CLLocation *)convertGeoPointToCLLocation;
 
-- (MKPointAnnotation *) annotation:(PinPFObject *)pinObject;
 
 @end

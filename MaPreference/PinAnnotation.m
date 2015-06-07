@@ -10,4 +10,18 @@
 
 @implementation PinAnnotation
 
+
+-(instancetype)initWithPFObject:(PinPFObject*)pinPFObject{
+    self = [super init];
+    if (self){
+        
+        _businessName = pinPFObject.businessName;
+        _businessAddress = pinPFObject.addressString;
+        _parseObjectID = pinPFObject.objectId;
+        _reviews = [[NSMutableArray alloc]initWithArray:pinPFObject.reviews];
+    }
+    return self;
+}
+
+
 @end

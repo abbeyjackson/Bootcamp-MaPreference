@@ -13,7 +13,7 @@
 #import "ListViewCell.h"
 #import "PinPFObject.h"
 #import "PinDetailController.h"
-#import "PinAnnotationView.h"
+#import "PinAnnotation.h"
 
 
 @interface DataViewController ()<MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>{
@@ -129,6 +129,7 @@ NSMutableArray *allPinLocations;
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
+    // do not show callout on user's location (blue dot)
     MKAnnotationView* annotationView = [mapView viewForAnnotation:userLocation];
     annotationView.canShowCallout = NO;
     
@@ -152,9 +153,10 @@ NSMutableArray *allPinLocations;
                     for (PinPFObject *location in locations) {
                         [objectIds addObject:[PFObject objectWithoutDataWithClassName:@"Locations" objectId: location.objectId]];
                         [self.nearbyPins addObject:location];
-                        MKPointAnnotation *marker= [location annotation:location];
+                        PinAnnotation *marker = [location makeAnnotation:location];
                         marker.title = location.businessName;
                         marker.subtitle = location.addressString;
+                        
                         [self.mapView addAnnotation:marker];
 
                     }
@@ -169,8 +171,9 @@ NSMutableArray *allPinLocations;
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
-//    MKAnnotationView *annotationView = sender;
-//    [segue.destinationViewController setAnnotation:annotationView.annotation];
+    PinAnnotation *location = sender;
+    [[segue destinationViewController] setAnnotation:location];
+
 }
 
 - (IBAction)unwindToDataView:(UIStoryboardSegue*)sender{
@@ -209,8 +212,9 @@ NSMutableArray *allPinLocations;
     UITapGestureRecognizer *tapGesture =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(calloutTapped:)];
-    [self.view addGestureRecognizer:tapGesture];
+    [view addGestureRecognizer:tapGesture];
 }
+
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     

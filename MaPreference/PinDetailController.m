@@ -11,6 +11,7 @@
 #import "LocationReviewCell.h"
 #import "PinPFObject.h"
 #import "DataViewController.h"
+#import "PinAnnotation.h"
 
 @interface PinDetailController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -71,8 +72,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    self.annotation = [[PinAnnotation alloc]init];
     LocationInfoCell *locationCell = [tableView dequeueReusableCellWithIdentifier:@"locationInfoCell" forIndexPath:indexPath];
-//    locationCell.locationNameLabel.text = self.annotation.
+    locationCell.locationNameLabel.text = self.annotation.businessName;
     LocationReviewCell *reviewCell = [tableView dequeueReusableCellWithIdentifier:@"locationReviewCell" forIndexPath:indexPath];
     
     if (indexPath.row == 1) {
