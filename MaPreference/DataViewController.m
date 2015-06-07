@@ -86,19 +86,18 @@ NSMutableArray *allPinLocations;
 }
 
 
-<<<<<<< HEAD
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
     // do not show callout on user's location (blue dot)
     MKAnnotationView* annotationView = [mapView viewForAnnotation:userLocation];
     annotationView.canShowCallout = NO;
-    
-=======
+}
+
 - (IBAction)logoutUser:(id)sender {
     [PFUser logOut];
     [self loadRootView];
->>>>>>> 498a04a1adfa1b54b4bb534ee3473f4fb56bbb2f
+    
 }
 
 
@@ -136,9 +135,10 @@ NSMutableArray *allPinLocations;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
-    PinAnnotation *location = sender;
-    [[segue destinationViewController] setAnnotation:location];
+    if ([[segue identifier] isEqualToString:@"showPinDetail"]) {
+        PinAnnotation *location = sender;
+        [[segue destinationViewController] setAnnotation:location];
+    }
 
 }
 
@@ -154,7 +154,6 @@ NSMutableArray *allPinLocations;
     [self.navigationController presentViewController:addLocationController animated:YES completion:nil];
 }
 
-<<<<<<< HEAD
 
 
 - (void)didReceiveMemoryWarning {
@@ -166,9 +165,11 @@ NSMutableArray *allPinLocations;
 
 
 -(void)calloutTapped:(id) sender{
-=======
-- (MKAnnotationView *)mapView:(MKMapView *)mapView
-            viewForAnnotation:(id<MKAnnotation>)annotation {
+    
+    [self performSegueWithIdentifier:@"showPinDetail" sender:self];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     
     if (annotation == self.mapView.userLocation){
         return nil; //default to blue dot
@@ -188,11 +189,9 @@ NSMutableArray *allPinLocations;
     pinView.canShowCallout = YES;
     pinView.pinColor = MKPinAnnotationColorGreen;
     pinView.calloutOffset = CGPointMake(-15, 0);
->>>>>>> 498a04a1adfa1b54b4bb534ee3473f4fb56bbb2f
-    
-    [self performSegueWithIdentifier:@"showPinDetail" sender:self];
-}
 
+    return pinView;
+}
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     
