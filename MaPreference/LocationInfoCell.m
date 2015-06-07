@@ -10,6 +10,8 @@
 
 @implementation LocationInfoCell
 
+
+
 - (void)awakeFromNib {
     // Initialization code
 }

@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface PinDetailController : UITableViewController
 
+
+@property (strong, nonatomic) MKAnnotationView *annotation;
 
 - (IBAction)unwindToPinDetail:(UIStoryboardSegue*)sender;
 

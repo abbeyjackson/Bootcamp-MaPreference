@@ -167,6 +167,12 @@ NSMutableArray *allPinLocations;
      }];
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+//    MKAnnotationView *annotationView = sender;
+//    [segue.destinationViewController setAnnotation:annotationView.annotation];
+}
+
 - (IBAction)unwindToDataView:(UIStoryboardSegue*)sender{
     
 }
@@ -187,70 +193,28 @@ NSMutableArray *allPinLocations;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
-    
-    
-    
-    
-    
     // Dispose of any resources that can be recreated.
 }
-//
-//- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-//    
-//    if (annotation == self.mapView.userLocation){
 
-//        return nil; //default to blue dot
-//    }
-//
-//    
-//    MKAnnotationView *pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"loc"];
-//    pinView.canShowCallout = YES;
-//    pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+
+
+-(void)calloutTapped:(id) sender{
     
-//    return pinView;
+    [self performSegueWithIdentifier:@"showPinDetail" sender:self];
+}
+
+
+-(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
     
-//
-//    static NSString* annotationIdentifier = @"pinObject";
-//    
-//    MKPinAnnotationView* pinView = (MKPinAnnotationView *)
-//    [self.mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
-//    
-//    if (!pinView) {
-//        // if an existing pin view was not available, create one
-//        pinView = [[MKPinAnnotationView alloc]
-//                   initWithAnnotation:annotation reuseIdentifier:annotationIdentifier];
-//    }
-//    
-//    pinView.canShowCallout = YES;
-//    pinView.pinColor = MKPinAnnotationColorGreen;
-//    pinView.calloutOffset = CGPointMake(-15, 0);
-//    
-//    return pinView;
-
-//}
-
-////////////////////////////////////////////
-//- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-//    
-//    
-//    
-//    
-////    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Click" message:@"You Done Clicked" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-////    [alertView show];
-//}
+    UITapGestureRecognizer *tapGesture =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(calloutTapped:)];
+    [self.view addGestureRecognizer:tapGesture];
+}
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     
-    [self performSegueWithIdentifier:@"showPinDetail" sender:view];
     
-//    id <MKAnnotation> annotation = [view annotation];
-//    if ([annotation isKindOfClass:[PinAnnotationView class]])
-//    {
-//        NSLog(@"pinview");
-//        PinDetailController *dvc = [[self storyboard] instantiateViewControllerWithIdentifier:@"PinDetailController"];
-//
-//        [self.navigationController pushViewController:dvc animated:YES];
-//    }
     
 }
 
