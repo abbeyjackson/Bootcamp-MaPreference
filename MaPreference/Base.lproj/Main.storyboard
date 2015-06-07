@@ -702,7 +702,7 @@
                                 </state>
                                 <connections>
                                     <action selector="addLocationDoneButton:" destination="EnQ-a9-Px6" eventType="touchUpInside" id="jtf-NM-pAU"/>
-                                    <segue destination="uuX-OD-ipi" kind="show" id="30R-dc-0mj"/>
+                                    <segue destination="p6h-OV-UZF" kind="unwind" unwindAction="unwindToDataView:" id="4tN-rY-dI8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -778,7 +778,4 @@
         <image name="icon_lock" width="12" height="17"/>
         <image name="icon_user" width="16" height="16"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="30R-dc-0mj"/>
-    </inferredMetricsTieBreakers>
 </document>

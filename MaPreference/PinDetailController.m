@@ -42,13 +42,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    //will equal 1(header row) plus count of reviews
-    return 2;
+    if (section == 0) {
+        return 1;
+    }
+    return self.reviews.count;
 }
 
 - (IBAction)unwindToPinDetail:(UIStoryboardSegue*)sender{
@@ -74,15 +75,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //    self.annotation = [[PinAnnotation alloc]init];
-    LocationInfoCell *locationCell = [tableView dequeueReusableCellWithIdentifier:@"locationInfoCell" forIndexPath:indexPath];
-    //    locationCell.locationNameLabel.text = self.annotation.businessName;
-    LocationReviewCell *reviewCell = [tableView dequeueReusableCellWithIdentifier:@"locationReviewCell" forIndexPath:indexPath];
-    
-    if (indexPath.row == 1) {
-        
+    if (indexPath.section == 0) {
+
+        LocationInfoCell *locationCell = [tableView dequeueReusableCellWithIdentifier:@"locationInfoCell" forIndexPath:indexPath];
+        [locationCell.locationNameLabel setText:self.businessName];
+        [locationCell.locationAddressLabel setText:self.businessAddress];
+
         return locationCell;
-    }
-    else {
+    } else {
+        LocationReviewCell *reviewCell = [tableView dequeueReusableCellWithIdentifier:@"locationReviewCell" forIndexPath:indexPath];
+        [reviewCell.reviewTextLabel setText:@"HI"];
+        [reviewCell layoutSubviews];
         return reviewCell;
     }
     
