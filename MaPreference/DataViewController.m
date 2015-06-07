@@ -29,16 +29,14 @@ NSString *locationButtonText = @"List Locations";
 NSString *mapButtonText = @"Show Map";
 NSMutableArray *allPinLocations;
 
+#pragma mark - View with User Current Location
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.currentLocation = [PFGeoPoint geoPoint];
     [self loadRootView];
-
 }
-
-
 
 -(void)loadRootView{
     PFUser *currentUser = [PFUser currentUser];
@@ -61,43 +59,6 @@ NSMutableArray *allPinLocations;
     self.locationListTableView.hidden = YES;
 }
 
--(IBAction)mapListViewSwitchButton:(id)sender{
-    if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:locationButtonText]) {
-        self.locationListTableView.hidden = NO;
-        self.mapView.hidden = YES;
-        [self.dataMapListToggleButton setTitle:mapButtonText forState:UIControlStateNormal];
-        [self.locationListTableView reloadData];
-    }
-    else if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:mapButtonText]) {
-        self.locationListTableView.hidden = YES;
-        self.mapView.hidden = NO;
-        [self.dataMapListToggleButton setTitle:locationButtonText forState:UIControlStateNormal];
-        [self.mapView reloadInputViews];
-    }
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return 1;
-}
-
-
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-     ListViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"locationCell" forIndexPath:indexPath];
-    return cell;
-}
-
-
 -(void)myLocation{
     initialLocationSet = NO;
     _locationManager = [[CLLocationManager alloc] init];
@@ -106,7 +67,6 @@ NSMutableArray *allPinLocations;
     [_locationManager startUpdatingLocation];
     _locationManager.delegate = self;
 }
-
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     CLLocation *location = [locations firstObject];
@@ -124,6 +84,13 @@ NSMutableArray *allPinLocations;
     }
     [self getNearbyPins];
 }
+
+
+- (IBAction)logoutUser:(id)sender {
+    [PFUser logOut];
+    [self loadRootView];
+}
+
 
 -(void)getNearbyPins{
     
@@ -159,22 +126,12 @@ NSMutableArray *allPinLocations;
     
 }
 
-- (IBAction)logoutUser:(id)sender {
-    [PFUser logOut];
-    [self loadRootView];
-}
+
 
 
 - (void)showAddLocationController{
     AddLocationController *addLocationController = [[AddLocationController alloc]init];
     [self.navigationController presentViewController:addLocationController animated:YES completion:nil];
-}
-
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView
@@ -220,5 +177,37 @@ didSelectAnnotationView:(MKAnnotationView *)view {
     }
 }
 
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ListViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"locationCell" forIndexPath:indexPath];
+    return cell;
+}
+
+-(IBAction)mapListViewSwitchButton:(id)sender{
+    if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:locationButtonText]) {
+        self.locationListTableView.hidden = NO;
+        self.mapView.hidden = YES;
+        [self.dataMapListToggleButton setTitle:mapButtonText forState:UIControlStateNormal];
+        [self.locationListTableView reloadData];
+    }
+    else if ([self.dataMapListToggleButton.titleLabel.text isEqualToString:mapButtonText]) {
+        self.locationListTableView.hidden = YES;
+        self.mapView.hidden = NO;
+        [self.dataMapListToggleButton setTitle:locationButtonText forState:UIControlStateNormal];
+        [self.mapView reloadInputViews];
+    }
+}
 
 @end
