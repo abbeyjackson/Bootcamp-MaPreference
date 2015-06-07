@@ -24,4 +24,7 @@
 
 - (IBAction)unwindToDataView:(UIStoryboardSegue*)sender;
 
+
+-(void)getNearbyPins;
+
 @end

@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class PinAnnotation;
 
 @interface PinDetailController : UITableViewController
 
+
+@property (strong, nonatomic) PinAnnotation *annotation;
 
 - (IBAction)unwindToPinDetail:(UIStoryboardSegue*)sender;
 

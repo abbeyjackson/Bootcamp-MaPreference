@@ -10,6 +10,7 @@
 #import <Parse/PFObject+Subclass.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "PinAnnotation.h"
 
 @implementation PinPFObject
 
@@ -33,6 +34,15 @@
     
 }
 
+- (PinAnnotation *) makeAnnotation:(PinPFObject *)pinObject {
+    
+    PinAnnotation *marker = [[PinAnnotation alloc] initWithPFObject:pinObject];
+    marker.coordinate = [pinObject convertGeoPointToCLLocation].coordinate;
+    
+    return marker;
+}
+
+
 -(CLLocation *)convertGeoPointToCLLocation {
     
     PFGeoPoint *point = [self valueForKey:@"location"];
@@ -41,14 +51,6 @@
     
     return location;
     
-}
-
-- (MKPointAnnotation *) annotation:(PinPFObject *)pinObject {
-    
-    MKPointAnnotation *marker = [[MKPointAnnotation alloc] init];
-    marker.coordinate = [pinObject convertGeoPointToCLLocation].coordinate;
-    
-    return marker;
 }
 
 @end

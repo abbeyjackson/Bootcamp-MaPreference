@@ -13,7 +13,7 @@
 #import "ListViewCell.h"
 #import "PinPFObject.h"
 #import "PinDetailController.h"
-#import "PinAnnotationView.h"
+#import "PinAnnotation.h"
 
 
 @interface DataViewController ()<MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate>{
@@ -86,9 +86,18 @@ NSMutableArray *allPinLocations;
 }
 
 
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    // do not show callout on user's location (blue dot)
+    MKAnnotationView* annotationView = [mapView viewForAnnotation:userLocation];
+    annotationView.canShowCallout = NO;
+}
+
 - (IBAction)logoutUser:(id)sender {
     [PFUser logOut];
     [self loadRootView];
+    
 }
 
 
@@ -106,10 +115,13 @@ NSMutableArray *allPinLocations;
                     NSMutableArray *objectIds = [[NSMutableArray alloc] init];
                     
                     // Add ambassador ids into query
-                    for (PinPFObject *locationX in locations) {
-                        [objectIds addObject:[PFObject objectWithoutDataWithClassName:@"Locations" objectId: locationX.objectId]];
-                        [self.nearbyPins addObject:locationX];
-                        MKPointAnnotation *marker= [locationX annotation:locationX];
+                    for (PinPFObject *location in locations) {
+                        [objectIds addObject:[PFObject objectWithoutDataWithClassName:@"Locations" objectId: location.objectId]];
+                        [self.nearbyPins addObject:location];
+                        PinAnnotation *marker = [location makeAnnotation:location];
+                        marker.title = location.businessName;
+                        marker.subtitle = location.addressString;
+                        
                         [self.mapView addAnnotation:marker];
 
                     }
@@ -120,6 +132,14 @@ NSMutableArray *allPinLocations;
             }];
         }
      }];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue identifier] isEqualToString:@"showPinDetail"]) {
+        PinAnnotation *location = sender;
+        [[segue destinationViewController] setAnnotation:location];
+    }
+
 }
 
 - (IBAction)unwindToDataView:(UIStoryboardSegue*)sender{
@@ -134,8 +154,22 @@ NSMutableArray *allPinLocations;
     [self.navigationController presentViewController:addLocationController animated:YES completion:nil];
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView
-            viewForAnnotation:(id<MKAnnotation>)annotation {
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+    // Dispose of any resources that can be recreated.
+}
+
+
+
+-(void)calloutTapped:(id) sender{
+    
+    [self performSegueWithIdentifier:@"showPinDetail" sender:self];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     
     if (annotation == self.mapView.userLocation){
         return nil; //default to blue dot
@@ -155,26 +189,23 @@ NSMutableArray *allPinLocations;
     pinView.canShowCallout = YES;
     pinView.pinColor = MKPinAnnotationColorGreen;
     pinView.calloutOffset = CGPointMake(-15, 0);
-    
+
     return pinView;
 }
 
-- (void)mapView:(MKMapView *)mapView
-didSelectAnnotationView:(MKAnnotationView *)view {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Click" message:@"You Done Clicked" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-    [alertView show];
+-(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+    
+    UITapGestureRecognizer *tapGesture =
+    [[UITapGestureRecognizer alloc] initWithTarget:self
+                                            action:@selector(calloutTapped:)];
+    [view addGestureRecognizer:tapGesture];
 }
 
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
-{
-    id <MKAnnotation> annotation = [view annotation];
-    if ([annotation isKindOfClass:[PinAnnotationView class]])
-    {
-        NSLog(@"pinview");
-        PinDetailController *dvc = [[self storyboard] instantiateViewControllerWithIdentifier:@"PinDetailController"];
 
-        [self.navigationController pushViewController:dvc animated:YES];
-    }
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    
+    
+    
 }
 
 #pragma mark - Table view data source
