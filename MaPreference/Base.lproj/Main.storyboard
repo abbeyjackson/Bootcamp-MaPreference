@@ -493,23 +493,17 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review text goes here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SV-7l-PMa">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Review text goes here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SV-7l-PMa">
                                             <rect key="frame" x="13" y="55" width="574" height="130"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="130" id="5tu-kb-cWp"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="pGD-Sl-LSR" secondAttribute="trailing" constant="5" id="4aL-Kq-nVE"/>
-                                        <constraint firstItem="6SV-7l-PMa" firstAttribute="leading" secondItem="Uhi-fl-0b1" secondAttribute="leadingMargin" constant="5" id="Fyi-py-W8D"/>
-                                        <constraint firstItem="pGD-Sl-LSR" firstAttribute="top" secondItem="Uhi-fl-0b1" secondAttribute="topMargin" constant="16" id="KEY-sT-1vh"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="6SV-7l-PMa" secondAttribute="trailing" constant="5" id="KtD-Wz-2H7"/>
-                                        <constraint firstItem="pGD-Sl-LSR" firstAttribute="leading" secondItem="Uhi-fl-0b1" secondAttribute="leadingMargin" constant="5" id="Lm8-PP-z8l"/>
-                                        <constraint firstItem="6SV-7l-PMa" firstAttribute="top" secondItem="pGD-Sl-LSR" secondAttribute="bottom" constant="15" id="MJs-fb-peM"/>
+                                        <constraint firstItem="pGD-Sl-LSR" firstAttribute="top" secondItem="Uhi-fl-0b1" secondAttribute="topMargin" constant="16" id="3AL-bi-7yd"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="pGD-Sl-LSR" secondAttribute="trailing" constant="5" id="Ec5-uB-aZd"/>
+                                        <constraint firstItem="pGD-Sl-LSR" firstAttribute="leading" secondItem="Uhi-fl-0b1" secondAttribute="leadingMargin" constant="5" id="pWt-Ez-OMS"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
