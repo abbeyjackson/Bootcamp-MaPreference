@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSString *businessAddress;
 @property (nonatomic, strong) PinPFObject *parseObject;
 @property (nonatomic, strong) NSMutableArray *reviews;
+@property (assign) double distanceTo;
 
 -(instancetype)initWithPFObject:(PinPFObject*)pinPFObject;
 
