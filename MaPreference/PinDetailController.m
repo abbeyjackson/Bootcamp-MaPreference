@@ -86,6 +86,8 @@
 - (IBAction)unwindToPinDetail:(UIStoryboardSegue*)sender{
     
     // Pull any data from the view controller which initiated the unwind segue.
+    [self getReviews];
+    [self.tableView reloadData];
 }
 
 
@@ -95,7 +97,7 @@
         //pass forward pin object
         AddReviewController *destinationVC = [segue destinationViewController];
 
-        
+        destinationVC.pin = self.locationObject;
     }
     
 }
@@ -105,6 +107,13 @@
 //
 //}
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section == 0) {
+        return 90.0;
+    }
+    return 150.0;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -112,6 +121,7 @@
     if (indexPath.section == 0) {
 
         LocationInfoCell *locationCell = [tableView dequeueReusableCellWithIdentifier:@"locationInfoCell" forIndexPath:indexPath];
+        
         locationCell.locationNameLabel.text = self.locationObject.businessName;
         locationCell.locationAddressLabel.text = self.locationObject.addressString;
         
