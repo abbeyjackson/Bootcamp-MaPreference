@@ -84,7 +84,6 @@
 		F66EF5A31B200566005C972A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		F66EF5A51B20056C005C972A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F66EF5A71B200574005C972A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		F6E917911B21399D001CC404 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		F6E9179D1B225261001CC404 /* PinPFObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinPFObject.h; sourceTree = "<group>"; };
 		F6E9179E1B225261001CC404 /* PinPFObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinPFObject.m; sourceTree = "<group>"; };
 		F6E9179F1B225261001CC404 /* Tasks.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Tasks.rtf; path = MaPreference/Tasks.rtf; sourceTree = "<group>"; };
@@ -253,7 +252,6 @@
 				F6E917A81B22B1EB001CC404 /* PinReviewPFObject.m */,
 				F6E9179D1B225261001CC404 /* PinPFObject.h */,
 				F6E9179E1B225261001CC404 /* PinPFObject.m */,
-				F6E917911B21399D001CC404 /* Constants.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";
