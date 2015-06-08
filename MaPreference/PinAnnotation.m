@@ -17,7 +17,7 @@
         
         _businessName = pinPFObject.businessName;
         _businessAddress = pinPFObject.addressString;
-        _parseObjectID = pinPFObject.objectId;
+        _parseObject = pinPFObject;
         _reviews = [[NSMutableArray alloc]initWithArray:pinPFObject.reviews];
     }
     return self;

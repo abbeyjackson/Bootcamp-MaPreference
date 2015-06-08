@@ -30,9 +30,11 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    NSLog(@"Business name from viewDidLoad: %@", self.businessName);
+    NSLog(@"PinPFObject: %@", self.locationObject);
     
-    NSLog(@"Business name from viewDidLoad: %@", self.reviewIds);
+    self.dateFormat = [[NSDateFormatter alloc] init];
+    [self.dateFormat setDateFormat:@"yyyy-MM-dd"];
+
     self.reviewsForPin = [NSMutableArray array];
     [self getReviews];
     
@@ -40,10 +42,8 @@
 
 -(void)getReviews{
     
-    for (NSString *string in self.reviewIds) {
-        
         PFQuery *query = [PFQuery queryWithClassName:@"Review"];
-        [query whereKey:@"objectId" equalTo:string];
+        [query whereKey:@"pinObject" equalTo:self.locationObject];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (!error) {
                 // The find succeeded.
@@ -60,7 +60,7 @@
                 NSLog(@"Error: %@ %@", error, [error userInfo]);
             }
         }];
-    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -108,13 +108,20 @@
     if (indexPath.section == 0) {
 
         LocationInfoCell *locationCell = [tableView dequeueReusableCellWithIdentifier:@"locationInfoCell" forIndexPath:indexPath];
-        [locationCell.locationNameLabel setText:self.businessName];
-        [locationCell.locationAddressLabel setText:self.businessAddress];
-
+        locationCell.locationNameLabel.text = self.locationObject.businessName;
+        locationCell.locationAddressLabel.text = self.locationObject.addressString;
+        
         return locationCell;
     } else {
         LocationReviewCell *reviewCell = [tableView dequeueReusableCellWithIdentifier:@"locationReviewCell" forIndexPath:indexPath];
-        [reviewCell.reviewTextLabel setText:@"HI"];
+        PinReviewPFObject *reviewObject = self.reviewsForPin[indexPath.row];
+        reviewCell.reviewTextLabel.text = reviewObject.userReview;
+        NSString *username = reviewObject.createdBy;
+        
+        NSString *dateString = [self.dateFormat stringFromDate:reviewObject.createdAt];
+        
+        NSString *reviewUsernameDateString = [NSString stringWithFormat:@"Submitted by %@ on %@", username, dateString];
+        reviewCell.reviewUsernameDateLabel.text = reviewUsernameDateString;
         [reviewCell layoutSubviews];
         return reviewCell;
     }

@@ -13,7 +13,7 @@
 
 @dynamic userReview;
 @dynamic createdBy;
-@dynamic pinObjectID;
+@dynamic pinObject;
 
 
 

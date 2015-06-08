@@ -7,17 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-@class PinAnnotation;
+#import "PinPFObject.h"
 
 @interface PinDetailController : UITableViewController
 
-
-@property (strong, nonatomic) NSString *businessName;
-@property (strong, nonatomic) NSString *businessAddress;
-@property (nonatomic, strong) NSString *parseObjectID;
-@property (nonatomic, strong) NSMutableArray *reviews;
-@property (strong, nonatomic) NSMutableArray *reviewIds;
+@property (nonatomic, strong) PinPFObject *locationObject;
 @property (strong, nonatomic) NSMutableArray *reviewsForPin;
+
+@property (strong, nonatomic) NSDateFormatter *dateFormat;
 
 - (IBAction)unwindToPinDetail:(UIStoryboardSegue*)sender;
 

@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
+#import "PinPFObject.h"
 
 @interface PinReviewPFObject : PFObject<PFSubclassing>
 
 @property (nonatomic, strong) NSString *userReview;
 @property (nonatomic, strong) NSString *createdBy;
-@property (nonatomic, strong) NSString *pinObjectID;
+@property (nonatomic, strong) PinPFObject *pinObject;
 
 + (NSString *)parseClassName;
 
