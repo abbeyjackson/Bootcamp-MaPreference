@@ -13,6 +13,7 @@
 #import "DataViewController.h"
 #import "PinAnnotation.h"
 #import "PinReviewPFObject.h"
+#import "AddReviewController.h"
 
 @interface PinDetailController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -111,7 +112,9 @@
     
     if ([[segue identifier] isEqualToString:@"showAddReview"]) {
         //pass forward pin object
-        .
+        AddReviewController *destinationVC = [segue destinationViewController];
+
+        
     }
     
 }

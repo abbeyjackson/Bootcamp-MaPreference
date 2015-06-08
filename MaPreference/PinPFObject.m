@@ -34,11 +34,19 @@
     
 }
 
+//- (PinAnnotation *) makeAnnotation:(PinPFObject *)pinObject {
+//    
+//    PinAnnotation *marker = [[PinAnnotation alloc] initWithPFObject:pinObject];
+//    marker.coordinate = [pinObject convertGeoPointToCLLocation].coordinate;
+//    
+//    return marker;
+//}
+
 - (PinAnnotation *) makeAnnotation:(PinPFObject *)pinObject {
-    
+
     PinAnnotation *marker = [[PinAnnotation alloc] initWithPFObject:pinObject];
     marker.coordinate = [pinObject convertGeoPointToCLLocation].coordinate;
-    
+
     return marker;
 }
 
