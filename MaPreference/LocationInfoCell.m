@@ -22,15 +22,5 @@
     // Configure the view for the selected state
 }
 
--(void)layoutSubviews {
-    
-    CGRect newCellSubViewsFrame = self.bounds;
-    CGRect newCellViewFrame = self.frame;
-    
-    self.contentView.frame = self.contentView.bounds = self.backgroundView.frame = self.accessoryView.frame = newCellSubViewsFrame;
-    self.frame = newCellViewFrame;
-    
-    [super layoutSubviews];
-}
 
 @end

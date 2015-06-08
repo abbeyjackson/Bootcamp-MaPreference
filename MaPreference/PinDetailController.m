@@ -66,9 +66,6 @@
                         
                         self.reviewsForPin = [NSMutableArray arrayWithArray:objects];
                         
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            
-                        });
                         
                     } else {
                         // Log details of the failure
@@ -76,9 +73,6 @@
                     }
                 }];
                 
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                });
                 
             } else {
                 // Log details of the failure
@@ -117,6 +111,7 @@
     
     if ([[segue identifier] isEqualToString:@"showAddReview"]) {
         //pass forward pin object
+        .
     }
     
 }
@@ -139,8 +134,7 @@
         return locationCell;
     } else {
         LocationReviewCell *reviewCell = [tableView dequeueReusableCellWithIdentifier:@"locationReviewCell" forIndexPath:indexPath];
-        [reviewCell.reviewTextLabel setText:@"HI"];
-        [reviewCell layoutSubviews];
+        [reviewCell.reviewTextLabel setText:self.reviewsForPin[indexPath.row]];
         return reviewCell;
     }
     
