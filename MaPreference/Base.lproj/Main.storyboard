@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="T0K-pn-jXA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="T0K-pn-jXA">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -488,23 +488,39 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username and Date of review" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGD-Sl-LSR">
-                                            <rect key="frame" x="13" y="24" width="574" height="16"/>
+                                            <rect key="frame" x="13" y="18" width="574" height="17.5"/>
+                                            <color key="backgroundColor" red="0.84705882352941175" green="0.30196078431372547" blue="0.5607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="17.5" id="GgZ-aS-5nt"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="13"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Review text goes here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SV-7l-PMa">
-                                            <rect key="frame" x="13" y="55" width="574" height="130"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Review text goes here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SV-7l-PMa">
+                                            <rect key="frame" x="18" y="86" width="564" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="100" id="i3d-ji-XLE"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="pGD-Sl-LSR" firstAttribute="top" secondItem="Uhi-fl-0b1" secondAttribute="topMargin" constant="16" id="3AL-bi-7yd"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="pGD-Sl-LSR" secondAttribute="trailing" constant="5" id="Ec5-uB-aZd"/>
-                                        <constraint firstItem="pGD-Sl-LSR" firstAttribute="leading" secondItem="Uhi-fl-0b1" secondAttribute="leadingMargin" constant="5" id="pWt-Ez-OMS"/>
+                                        <constraint firstItem="pGD-Sl-LSR" firstAttribute="top" secondItem="Uhi-fl-0b1" secondAttribute="topMargin" constant="10" id="4L1-c7-jfZ"/>
+                                        <constraint firstItem="6SV-7l-PMa" firstAttribute="leading" secondItem="Uhi-fl-0b1" secondAttribute="leadingMargin" constant="10" id="88r-Qj-Jvy"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="6SV-7l-PMa" secondAttribute="trailing" constant="10" id="CkW-3a-Ife"/>
+                                        <constraint firstItem="6SV-7l-PMa" firstAttribute="top" secondItem="pGD-Sl-LSR" secondAttribute="bottom" constant="19.5" id="cAg-Xt-BGI"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="pGD-Sl-LSR" secondAttribute="trailing" constant="5" id="lMJ-sn-9kT"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="6SV-7l-PMa" secondAttribute="bottom" constant="5.5" id="raI-c7-tpz"/>
+                                        <constraint firstItem="pGD-Sl-LSR" firstAttribute="leading" secondItem="Uhi-fl-0b1" secondAttribute="leadingMargin" constant="5" id="zgu-qG-kgL"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="cAg-Xt-BGI"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="reviewTextLabel" destination="6SV-7l-PMa" id="2so-Py-t2d"/>
@@ -542,12 +558,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vi6-t5-9wV">
-                                <rect key="frame" x="46" y="188" width="508" height="392"/>
+                                <rect key="frame" x="46" y="187" width="508" height="392"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="392" id="Exd-Te-3pU"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -558,13 +573,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Big Bird's Big Comfy Couch" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89w-tu-In7">
-                                <rect key="frame" x="26" y="120" width="548" height="22"/>
+                                <rect key="frame" x="26" y="120" width="548" height="21.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 Sesame Street" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Na3-th-OaO">
-                                <rect key="frame" x="26" y="162" width="548" height="18"/>
+                                <rect key="frame" x="26" y="161" width="548" height="17.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
