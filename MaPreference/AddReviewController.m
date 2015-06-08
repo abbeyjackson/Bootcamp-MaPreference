@@ -20,14 +20,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.currentUser = [PFUser currentUser];
-
-    self.pin = [PinPFObject object];
     [self.addReviewTextField.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
     [self.addReviewTextField.layer setBorderWidth:1.0];
     self.addReviewTextField.layer.cornerRadius = 5.0;
     self.addReviewTextField.clipsToBounds = YES;
+    self.addReviewAddressLabel.text = self.pin.businessName;
+    self.addReviewNameLabel.text = self.pin.businessName;
 
-    
 }
 
 - (void)didReceiveMemoryWarning {
