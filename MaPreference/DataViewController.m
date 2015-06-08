@@ -35,6 +35,7 @@ NSString *mapButtonText = @"Show Map";
     // Do any additional setup after loading the view.
     self.currentLocation = [PFGeoPoint geoPoint];
     self.nearbyPins = [NSMutableArray array];
+    self.reviewsForPin = [NSMutableArray array];
     [self loadRootView];
 }
 
@@ -118,7 +119,6 @@ NSString *mapButtonText = @"Show Map";
                     // Add ambassador ids into query
                     for (PinPFObject *location in locations) {
                         
-                        
                         PinAnnotation *marker = [location makeAnnotation:location];
                         marker.title = location.businessName;
                         marker.subtitle = location.addressString;
@@ -142,6 +142,14 @@ NSString *mapButtonText = @"Show Map";
     if ([[segue identifier] isEqualToString:@"showPinDetail"]) {
         
         PinAnnotation *annotationView = (PinAnnotation*) sender;
+        NSMutableArray *reviewIds = [NSMutableArray array];
+        
+        for (NSDictionary *dict in annotationView.reviews) {
+            NSString *reviewId = [NSString stringWithFormat:[dict valueForKey:@"objectId"]];
+            NSLog(@"dict: %@", reviewId);
+            [reviewIds addObject:reviewId];
+        }
+        
         
         NSLog(@"pinAnnoation.parseObjectID is: %@", annotationView.parseObjectID);
         
@@ -150,6 +158,7 @@ NSString *mapButtonText = @"Show Map";
         destinationVC.businessName = annotationView.businessName;
         destinationVC.businessAddress = annotationView.businessAddress;
         destinationVC.reviews = annotationView.reviews;
+        destinationVC.reviewIds = reviewIds;
     }
     
 }

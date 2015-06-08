@@ -12,6 +12,7 @@
 #import "PinPFObject.h"
 #import "DataViewController.h"
 #import "PinAnnotation.h"
+#import "PinReviewPFObject.h"
 
 @interface PinDetailController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -31,6 +32,60 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     NSLog(@"Business name from viewDidLoad: %@", self.businessName);
     
+    NSLog(@"Business name from viewDidLoad: %@", self.reviewIds);
+    [self getReviews];
+    
+}
+
+-(void)getReviews{
+    
+    for (NSString *string in self.reviewIds) {
+//        
+//        PinReviewPFObject *reviewObject = [PFObject objectWithoutDataWithClassName:@"Review" objectId:string];
+//        [self.reviews addObject:[PinReviewPFObject objectWithoutDataWithClassName:@"Review" objectId:string]];
+        NSLog(@"user review: %@", self.reviews[0]);
+        
+        
+        
+        PFQuery *query = [PFQuery queryWithClassName:@"Review"];
+        [query whereKey:@"objectId" equalTo:string];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                // The find succeeded.
+                NSLog(@"Successfully retrieved %lu review.", (unsigned long)objects.count);
+                
+                self.reviewsForPin = [NSMutableArray arrayWithArray:objects];
+                
+                PFQuery *query = [PFQuery queryWithClassName:@"Review"];
+                [query whereKey:@"objectId" equalTo:string];
+                [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                    if (!error) {
+                        // The find succeeded.
+                        NSLog(@"Successfully retrieved %lu review.", (unsigned long)objects.count);
+                        
+                        
+                        self.reviewsForPin = [NSMutableArray arrayWithArray:objects];
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            
+                        });
+                        
+                    } else {
+                        // Log details of the failure
+                        NSLog(@"Error: %@ %@", error, [error userInfo]);
+                    }
+                }];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                });
+                
+            } else {
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

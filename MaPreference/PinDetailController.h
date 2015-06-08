@@ -16,6 +16,8 @@
 @property (strong, nonatomic) NSString *businessAddress;
 @property (nonatomic, strong) NSString *parseObjectID;
 @property (nonatomic, strong) NSMutableArray *reviews;
+@property (strong, nonatomic) NSMutableArray *reviewIds;
+@property (strong, nonatomic) NSMutableArray *reviewsForPin;
 
 - (IBAction)unwindToPinDetail:(UIStoryboardSegue*)sender;
 
