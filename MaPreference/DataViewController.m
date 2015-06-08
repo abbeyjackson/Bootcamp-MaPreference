@@ -154,8 +154,6 @@ NSString *mapButtonText = @"Show Map";
 }
 
 
-
-
 - (void)showAddLocationController{
     AddLocationController *addLocationController = [[AddLocationController alloc]init];
     [self.navigationController presentViewController:addLocationController animated:YES completion:nil];
@@ -237,6 +235,9 @@ NSString *mapButtonText = @"Show Map";
     NSLog(@"%ld", (long)indexPath.row);
     cell.listNameLabel.text = object.businessName;
     cell.listAddressLabel.text = object.addressString;
+    
+    double distanceTo = [object.location distanceInKilometersTo:self.currentLocation] * 1000;
+    cell.listDistanceLabel.text = [NSString stringWithFormat:@"%.0f m", distanceTo];
     return cell;
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "PinAnnotation.h"
+#import <Parse/Parse.h>
 
 @implementation PinAnnotation
 
@@ -18,8 +19,7 @@
         _businessName = pinPFObject.businessName;
         _businessAddress = pinPFObject.addressString;
         _parseObject = pinPFObject;
-        _reviews = [[NSMutableArray alloc]initWithArray:pinPFObject.reviews];
-    }
+        _reviews = [[NSMutableArray alloc]initWithArray:pinPFObject.reviews];    }
     return self;
 }
 
