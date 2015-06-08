@@ -140,11 +140,16 @@ NSString *mapButtonText = @"Show Map";
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([[segue identifier] isEqualToString:@"showPinDetail"]) {
-        
-        PinAnnotation *annotationView = (PinAnnotation*) sender;
-                
-        PinDetailController *destinationVC = [segue destinationViewController];
-        destinationVC.locationObject = annotationView.parseObject;
+        if ([sender isKindOfClass:[PinAnnotation class]]) {
+            
+            PinAnnotation *annotationView = (PinAnnotation*) sender;
+            
+            PinDetailController *destinationVC = [segue destinationViewController];
+            destinationVC.locationObject = annotationView.parseObject;
+        } else {
+            PinDetailController *destinationVC = [segue destinationViewController];
+            destinationVC.locationObject = sender;
+        }
     }
     
 }
@@ -188,7 +193,7 @@ NSString *mapButtonText = @"Show Map";
     }
     
     pinView.canShowCallout = YES;
-    pinView.pinColor = MKPinAnnotationColorGreen;
+    pinView.pinColor = MKPinAnnotationColorPurple;
     pinView.annotation = annotation;
     pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     
@@ -239,6 +244,11 @@ NSString *mapButtonText = @"Show Map";
     double distanceTo = [object.location distanceInKilometersTo:self.currentLocation] * 1000;
     cell.listDistanceLabel.text = [NSString stringWithFormat:@"%.0f m", distanceTo];
     return cell;
+}
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    PinPFObject *pinObject = self.nearbyPins[indexPath.row];
+    [self performSegueWithIdentifier:@"showPinDetail" sender:pinObject];
 }
 
 -(IBAction)mapListViewSwitchButton:(id)sender{
