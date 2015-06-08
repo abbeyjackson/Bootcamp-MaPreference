@@ -110,7 +110,7 @@ NSString *mapButtonText = @"Show Map";
         if (!error) {
             self.currentLocation = geoPoint;
             PFQuery *query = [PFQuery queryWithClassName:@"Location"];
-            [query whereKey:@"location" nearGeoPoint:self.currentLocation withinKilometers:2.0];
+            [query whereKey:@"location" nearGeoPoint:self.currentLocation withinKilometers:5.0];
             
             [query findObjectsInBackgroundWithBlock:^(NSArray *locations, NSError *error) {
                 if (!error) {
@@ -151,6 +151,8 @@ NSString *mapButtonText = @"Show Map";
 
 - (IBAction)unwindToDataView:(UIStoryboardSegue*)sender{
     
+    [self.mapView reloadInputViews];
+    [self.locationListTableView reloadData];
 }
 
 
