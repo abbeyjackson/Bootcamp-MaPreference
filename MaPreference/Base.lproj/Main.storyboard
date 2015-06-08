@@ -212,7 +212,7 @@
                                 </connections>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="105" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wPi-E0-HfA">
-                                <rect key="frame" x="0.0" y="20" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" rowHeight="105" id="EFb-g6-MJe" customClass="ListViewCell">
@@ -266,7 +266,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wPi-E0-HfA" firstAttribute="top" secondItem="d7P-kG-Khn" secondAttribute="bottom" constant="-44" id="13R-CL-n7z"/>
+                            <constraint firstItem="wPi-E0-HfA" firstAttribute="top" secondItem="d7P-kG-Khn" secondAttribute="bottom" id="13R-CL-n7z"/>
                             <constraint firstAttribute="bottom" secondItem="a6s-KS-NiZ" secondAttribute="bottom" id="Kkl-6f-7sg"/>
                             <constraint firstAttribute="trailing" secondItem="wPi-E0-HfA" secondAttribute="trailing" id="PJF-Q4-N6m"/>
                             <constraint firstItem="gKo-B8-rgI" firstAttribute="top" secondItem="wPi-E0-HfA" secondAttribute="bottom" id="bRJ-TH-X9Y"/>
@@ -488,16 +488,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username and Date of review" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGD-Sl-LSR">
-                                            <rect key="frame" x="38" y="24" width="544" height="16"/>
+                                            <rect key="frame" x="13" y="24" width="574" height="16"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="13"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review text goes here" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SV-7l-PMa">
-                                            <rect key="frame" x="38" y="55" width="524" height="130"/>
+                                            <rect key="frame" x="13" y="55" width="574" height="130"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="130" id="6aT-UD-Me2"/>
-                                                <constraint firstAttribute="width" constant="524" id="hnj-yN-lkA"/>
+                                                <constraint firstAttribute="height" constant="130" id="5tu-kb-cWp"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -505,12 +504,12 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="6SV-7l-PMa" firstAttribute="leading" secondItem="Uhi-fl-0b1" secondAttribute="leadingMargin" constant="30" id="7Bq-ee-7kc"/>
-                                        <constraint firstItem="pGD-Sl-LSR" firstAttribute="leading" secondItem="Uhi-fl-0b1" secondAttribute="leadingMargin" constant="30" id="Svm-NB-75D"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="6SV-7l-PMa" secondAttribute="bottom" constant="6" id="ULn-LU-MM9"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="6SV-7l-PMa" secondAttribute="trailing" constant="30" id="oUU-lv-eV4"/>
-                                        <constraint firstItem="pGD-Sl-LSR" firstAttribute="top" secondItem="Uhi-fl-0b1" secondAttribute="topMargin" constant="16" id="tlh-rD-sYM"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="pGD-Sl-LSR" secondAttribute="trailing" constant="10" id="ym2-Pz-LHv"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="pGD-Sl-LSR" secondAttribute="trailing" constant="5" id="4aL-Kq-nVE"/>
+                                        <constraint firstItem="6SV-7l-PMa" firstAttribute="leading" secondItem="Uhi-fl-0b1" secondAttribute="leadingMargin" constant="5" id="Fyi-py-W8D"/>
+                                        <constraint firstItem="pGD-Sl-LSR" firstAttribute="top" secondItem="Uhi-fl-0b1" secondAttribute="topMargin" constant="16" id="KEY-sT-1vh"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="6SV-7l-PMa" secondAttribute="trailing" constant="5" id="KtD-Wz-2H7"/>
+                                        <constraint firstItem="pGD-Sl-LSR" firstAttribute="leading" secondItem="Uhi-fl-0b1" secondAttribute="leadingMargin" constant="5" id="Lm8-PP-z8l"/>
+                                        <constraint firstItem="6SV-7l-PMa" firstAttribute="top" secondItem="pGD-Sl-LSR" secondAttribute="bottom" constant="15" id="MJs-fb-peM"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -524,8 +523,8 @@
                             <outlet property="delegate" destination="Rg1-aG-Eo9" id="xfZ-Xi-yrW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Location Information" id="pDD-ap-mDp">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="viR-GT-rzz">
+                    <navigationItem key="navigationItem" id="pDD-ap-mDp">
+                        <barButtonItem key="rightBarButtonItem" title="Add Review" id="viR-GT-rzz">
                             <connections>
                                 <segue destination="FUD-ya-T0h" kind="presentation" identifier="showAddReview" id="u9c-eX-2Fv"/>
                             </connections>
