@@ -34,8 +34,7 @@
     PinReviewPFObject *review = [PinReviewPFObject object];
     review.userReview = self.addReviewTextField.text;
     review.createdBy = currentUser.username;
-//    review.location = self.location;
-    review.pinObjectID = self.pin.objectId;
+    review.pinObject = self.pin;
     
     [review saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         if (succeeded) {

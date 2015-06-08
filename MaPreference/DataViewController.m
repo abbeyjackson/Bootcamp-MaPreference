@@ -142,23 +142,9 @@ NSString *mapButtonText = @"Show Map";
     if ([[segue identifier] isEqualToString:@"showPinDetail"]) {
         
         PinAnnotation *annotationView = (PinAnnotation*) sender;
-        NSMutableArray *reviewIds = [NSMutableArray array];
-        
-        for (NSDictionary *dict in annotationView.reviews) {
-            NSString *reviewId = [NSString stringWithFormat:[dict valueForKey:@"objectId"]];
-            NSLog(@"dict: %@", reviewId);
-            [reviewIds addObject:reviewId];
-        }
-        
-        
-        NSLog(@"pinAnnoation.parseObjectID is: %@", annotationView.parseObjectID);
-        
+                
         PinDetailController *destinationVC = [segue destinationViewController];
-        destinationVC.parseObjectID = annotationView.parseObjectID;
-        destinationVC.businessName = annotationView.businessName;
-        destinationVC.businessAddress = annotationView.businessAddress;
-        destinationVC.reviews = annotationView.reviews;
-        destinationVC.reviewIds = reviewIds;
+        destinationVC.locationObject = annotationView.parseObject;
     }
     
 }

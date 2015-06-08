@@ -42,48 +42,12 @@
     PinReviewPFObject *review = [PinReviewPFObject object];
     review.userReview = self.addLocationReviewField.text;
     review.createdBy = currentUser.username;
-    review.pinObjectID = self.pin.objectId;
+    review.pinObject = self.pin;
     
     [review saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-        if (succeeded) {
-            
-            if (isAddingPin) {
-                
-                self.pin.reviews = [NSMutableArray arrayWithObject:review];
-                [self.pin saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
-                    if (succeeded) {
-                        
-                        NSString *successString = @"Thank you for adding a location!";
-                        UIAlertView *successAlertView = [[UIAlertView alloc] initWithTitle:@"Success" message:successString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                        [successAlertView show];
-                        
-                    }
-                    else {
-                        NSString *errorString = [[error userInfo] objectForKey:@"error"];
-                        UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                        [errorAlertView show];
-                    }
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        // Add reload map and reload tableview
-                    });
-                }];
-
-            }
-
-            if (!isAddingPin) {
-                NSString *successString = @"Thank you for adding a review!";
-                UIAlertView *successAlertView = [[UIAlertView alloc] initWithTitle:@"Success" message:successString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [successAlertView show];
-            }
+        if (error) {
+            NSLog(@"error in review save is %@", error);
         }
-        else {
-            NSString *errorString = [[error userInfo] objectForKey:@"error"];
-            UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [errorAlertView show];
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Add reload map and reload tableview
-        });
     }];
 }
 
@@ -111,8 +75,25 @@
     self.pin.location = geoPoint;
     self.pin.addressString = self.addLocationAddressLabel.text;
     
-    [self saveReview:self.currentUser isAlsoAddingPin:YES];
     
+    [self.pin saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+        if (succeeded) {
+            
+            NSString *successString = @"Thank you for adding a location!";
+            UIAlertView *successAlertView = [[UIAlertView alloc] initWithTitle:@"Success" message:successString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [successAlertView show];
+            
+            [self saveReview:self.currentUser isAlsoAddingPin:YES];
+            
+        }
+        else {
+            NSString *errorString = [[error userInfo] objectForKey:@"error"];
+            UIAlertView *errorAlertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorString delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [errorAlertView show];
+        }
+    }];
+
+
     //[self getAddessInfo:self.addLocationAddressLabel.text];
     
 }

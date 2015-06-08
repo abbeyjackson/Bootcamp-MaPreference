@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) NSString *businessName;
 @property (strong, nonatomic) NSString *businessAddress;
-@property (nonatomic, strong) NSString *parseObjectID;
+@property (nonatomic, strong) PinPFObject *parseObject;
 @property (nonatomic, strong) NSMutableArray *reviews;
 
 -(instancetype)initWithPFObject:(PinPFObject*)pinPFObject;
