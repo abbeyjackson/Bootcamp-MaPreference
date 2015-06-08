@@ -8,6 +8,7 @@
 
 #import "AddLocationController.h"
 #import <CoreLocation/CoreLocation.h>
+#import <QuartzCore/QuartzCore.h>
 #import "Constants.h"
 #import "PinPFObject.h"
 #import "DataViewController.h"
@@ -26,6 +27,10 @@
     // Do any additional setup after loading the view.
     self.currentUser = [PFUser currentUser];
     self.pin = [PinPFObject object];
+    [self.addLocationReviewField.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
+    [self.addLocationReviewField.layer setBorderWidth:1.0];
+    self.addLocationReviewField.layer.cornerRadius = 5.0;
+    self.addLocationReviewField.clipsToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning {
