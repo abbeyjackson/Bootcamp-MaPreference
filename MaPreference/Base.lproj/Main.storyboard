@@ -591,12 +591,14 @@
                                 <rect key="frame" x="46" y="188" width="508" height="392"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="392" id="32b-8h-mdX"/>
                                     <constraint firstAttribute="height" constant="392" id="Exd-Te-3pU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="32b-8h-mdX"/>
                                         <exclude reference="Exd-Te-3pU"/>
                                     </mask>
                                 </variation>

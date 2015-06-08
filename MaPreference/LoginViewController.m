@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 #import "SignUpViewController.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *loginView;
 @property (weak, nonatomic) IBOutlet UITextField *passwordView;
 
@@ -24,6 +24,8 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] init]];
     self.loginView.layer.borderColor = [UIColor colorWithWhite:1.0f alpha:1.0f].CGColor;
     self.loginView.layer.borderWidth = 1.0f;
+    self.passwordField.delegate = self;
+    self.usernameField.delegate = self;
     
 }
 
@@ -58,5 +60,26 @@
     
 }
 
+#pragma TextField Delegate
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        CGRect frameUp = self.view.frame;
+        frameUp.origin.y -=150;
+        self.view.frame = frameUp;
+    }];
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.frame = [[UIScreen mainScreen] bounds];
+    }];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
 
 @end

@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 #import "LoginViewController.h"
 
-@interface SignupViewController ()
+@interface SignupViewController ()<UITextFieldDelegate, UIAlertViewDelegate>
 
 @end
 
@@ -19,6 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.usernameField.delegate = self;
+    self.passwordField.delegate = self;
+    
 }
 
 - (IBAction)signup:(id)sender {
@@ -53,6 +56,28 @@
         
     }
     
+}
+
+#pragma TextField Delegate
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        CGRect frameUp = self.view.frame;
+        frameUp.origin.y -=150;
+        self.view.frame = frameUp;
+    }];
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.frame = [[UIScreen mainScreen] bounds];
+    }];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end
