@@ -11,6 +11,8 @@
 #import "SignUpViewController.h"
 
 @interface LoginViewController ()
+@property (weak, nonatomic) IBOutlet UIView *loginView;
+@property (weak, nonatomic) IBOutlet UITextField *passwordView;
 
 @end
 
@@ -20,6 +22,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:[[UIView alloc] init]];
+    self.loginView.layer.borderColor = [UIColor colorWithWhite:1.0f alpha:1.0f].CGColor;
+    self.loginView.layer.borderWidth = 1.0f;
     
 }
 

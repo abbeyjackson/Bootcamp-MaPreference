@@ -139,15 +139,15 @@ NSString *mapButtonText = @"Show Map";
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
     if ([[segue identifier] isEqualToString:@"showPinDetail"]) {
+        PinDetailController *destinationVC = [segue destinationViewController];
+        
         if ([sender isKindOfClass:[PinAnnotation class]]) {
-            
             PinAnnotation *annotationView = (PinAnnotation*) sender;
-            
-            PinDetailController *destinationVC = [segue destinationViewController];
             destinationVC.locationObject = annotationView.parseObject;
+            
         } else {
-            PinDetailController *destinationVC = [segue destinationViewController];
             destinationVC.locationObject = sender;
         }
     }
@@ -158,6 +158,15 @@ NSString *mapButtonText = @"Show Map";
     
 }
 
+// uncomment this if you want cells to be different colours
+//- (void)tableView: (UITableView*)tableView willDisplayCell: (UITableViewCell*)cell forRowAtIndexPath: (NSIndexPath*)indexPath
+//{
+//    
+//    if(indexPath.row % 2 == 0)
+//        cell.backgroundColor = [UIColor redColor];
+//    else
+//        cell.backgroundColor = [UIColor whiteColor];
+//}
 
 - (void)showAddLocationController{
     AddLocationController *addLocationController = [[AddLocationController alloc]init];
@@ -193,7 +202,7 @@ NSString *mapButtonText = @"Show Map";
     }
     
     pinView.canShowCallout = YES;
-    pinView.pinColor = MKPinAnnotationColorPurple;
+    pinView.pinColor = MKPinAnnotationColorRed;
     pinView.annotation = annotation;
     pinView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     

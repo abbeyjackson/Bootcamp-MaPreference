@@ -24,7 +24,7 @@
     [self.addReviewTextField.layer setBorderWidth:1.0];
     self.addReviewTextField.layer.cornerRadius = 5.0;
     self.addReviewTextField.clipsToBounds = YES;
-    self.addReviewAddressLabel.text = self.pin.businessName;
+    self.addReviewAddressLabel.text = self.pin.addressString;
     self.addReviewNameLabel.text = self.pin.businessName;
 
 }
