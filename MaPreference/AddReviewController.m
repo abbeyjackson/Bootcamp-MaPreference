@@ -20,8 +20,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.currentUser = [PFUser currentUser];
-    self.pin = [PinPFObject object];
-
 }
 
 - (void)didReceiveMemoryWarning {
