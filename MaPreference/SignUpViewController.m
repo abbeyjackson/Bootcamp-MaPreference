@@ -24,6 +24,7 @@
     [super viewDidLoad];
     self.usernameField.delegate = self;
     self.passwordField.delegate = self;
+    self.emailField.delegate = self;
 }
 
 
