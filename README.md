@@ -1,5 +1,6 @@
 # MaPreference
 LighthouseLabs.ca iOS Bootcamp - MIDTERM PROJECT: Crowd sourced preferred breastfeeding locations map app 
+Team Project: Abbey Jackson @earthabbey & Oliver Andrews @Ollstar
 
 Using Parse Framework, users first sign up and then log in to view the map. If already logged in, they are forwarded to the map, bypassing the log in view. The map displays all locations within 2.0Km. On the map navigation bar a user can tap a button which will toggle a list view. The list view displays all locations within 2.0Km in a table view. Each table cell displays the name, address, and the distance from the user's current location. 
 
