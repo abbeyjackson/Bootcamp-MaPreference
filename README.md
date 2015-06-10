@@ -11,7 +11,7 @@ Tapping an item in the list will forward the user to the detail view for that lo
 
 On the detail view users are able to see the name and address of the location as well as any reviews / comments that have been added by other users. From the detail view users can add a new review. The new review will appear at the bottom of the review list.
 
-![MaPreference Details and Add Review](MaPreference - detailandaddreview.gif)
+![MaPreference Details and Add Review](MaPreference-detailandaddreview.gif)
 
 ********
 This was a midterm project with limited time, as such the UI and UX are very basic. Additionally reverse geocoding the address of a new location added by a user was not implemented. Added location pins are created based on the user's current location when adding. This will be fixed if development continues on this app.
